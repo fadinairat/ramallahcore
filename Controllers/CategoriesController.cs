@@ -12,6 +12,8 @@ namespace Ramallah.Controllers
         public CategoriesController(DataContext context)
         {
             _context = context;
+
+            //Comment Came to the Test Branch
         }
 
         // Get: Categories/Details/ID
