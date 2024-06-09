@@ -1,0 +1,195 @@
+﻿@model IEnumerable<Ramallah.Models.Menu>
+@using Ramallah.Models
+@{
+    ViewData["Title"] = Localizer["Menus"];
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Menus"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Menus"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+            <div class="col-6 text-start"><h1 class="form-title">@Localizer["List All Menus"]</h1></div>
+    @if (Functions.CheckAccess("Create", "Menus", "Control", HttpContextAccessor.HttpContext))
+    {
+        <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="Create"><i class="bi bi-plus-circle"></i> @Localizer["Add New Menu"]</a></div>
+    }
+</div>
+<form asp-action="Index" >
+<div class="row mb-3">
+    <div class="col-6 col-md-3">
+        <label for="keyword" >@Localizer["Keyword"]:</label>
+        <input type="text" placeholder="Keyword" class="form-control" name="keyword" id="keyword" value="@ViewBag.keyword" />
+    </div>
+  
+    <div class="col-6 col-md-3">
+        <label for="slang" >@Localizer["Language"]:</label>
+        <select name="slang" id="slang" class ="form-control">
+                <option value="">:: @Localizer["Select Language"] ::</option>
+                @{
+                List<Language> langs = ViewBag.Languages;
+                foreach (Language temp in langs)
+                {                                                   
+                    <!option value="@temp.Id" @(ViewBag.Language!=null && ViewBag.Language == temp.Id ? "SELECTED" : "")>@(currentCulture == "en" ? temp.Name : temp.ArName)</!option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-6 col-sm-3">
+        <label for="slocation" >@Localizer["Location"]:</label>
+        <select name="slocation" id="slocation" class="form-control">
+            <option value="">:: @Localizer["Select Location"] ::</option>
+            @{
+                List<MenuLocation> locations = ViewBag.Locations;
+                foreach (MenuLocation temp in locations)
+                {                                                   
+                    <!option value="@temp.Id" @(ViewBag.Location!=null && ViewBag.Location==temp.Id ? "SELECTED":"")>@(currentCulture == "en" ? temp.Title : temp.ArTitle)</!option>
+                }
+            }
+        </select>
+    </div>
+        <div class="col-6 col-md-2"><br /><button type="submit" asp-action="Index" class="btn btn-primary mt-2">@Localizer["Search"]</button></div>
+</div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Target)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LangId)
+            </th>
+            <th>
+                @Localizer["Added By"]
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuLocation.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Target)
+            </td>
+            <td>
+                @(item.ParentId!=null ? item.MenuParentRef.Name : "")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                @(item.Language != null ? (currentCulture == "en" ? item.Language.Name : item.Language.ArName) : "")
+            </td>
+            <td>
+                @(item.UserId != null ? item.User.Fullname : "")
+            </td>
+            <td>
+                @if (Functions.CheckAccess("Edit", "Menus", "Control", HttpContextAccessor.HttpContext))
+                {
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pencil-alt"></i> </a> 
+                }
+
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-folder"></i> </a>
+                @if (Functions.CheckAccess("Delete", "Menus", "Control", HttpContextAccessor.HttpContext))
+                {
+                     <a asp-route-id="@item.Id" class="btn btn-danger btn-sm" asp-action="Delete"><i class="fas fa-trash"></i> </a>
+                }
+            </td>
+        </tr>
+                    if(ViewBag.SubMenus != null){
+                        foreach(Menu sub in ViewBag.SubMenus)
+                        {
+                            if(sub.ParentId == item.Id)
+                            {
+                                <tr class="table-success">
+                                    <td>
+                                        <i class="bi bi-forward-fill"></i>  @Html.DisplayFor(modelItem => sub.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => sub.MenuLocation.Title)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => sub.Target)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => sub.MenuParentRef.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => sub.Priority)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => sub.Link)
+                                    </td>
+                                    <td>
+                                        @(sub.Language!= null ? (currentCulture == "en" ? sub.Language.Name : sub.Language.ArName) : "")
+                                    </td>
+                                    <td>
+                                        @(sub.UserId !=null ? sub.User.Fullname: "")
+                                    </td>
+                                    <td>
+                                        @if (Functions.CheckAccess("Edit", "Menus", "Control", HttpContextAccessor.HttpContext))
+                                        {
+                                            <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@sub.Id"><i class="fas fa-pencil-alt"></i></a>
+                                        }
+
+                                        <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@sub.Id"><i class="fas fa-folder"></i> </a>
+                                        @if (Functions.CheckAccess("Delete", "Menus", "Control", HttpContextAccessor.HttpContext))
+                                        {
+                                            <a asp-route-id="@sub.Id" class="btn btn-danger btn-sm" asp-action="Delete"><i class="fas fa-trash"></i> </a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+}
+    </tbody>
+</table>
+</div>
+</section>

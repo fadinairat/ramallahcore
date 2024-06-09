@@ -1,0 +1,99 @@
+﻿@using Ramallah.Models
+@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<nav id="main-menu">
+	<!-- The Main Navigation Menu -->
+	<ul>
+		@if (ViewBag.ParentMenus != null)
+		{
+			List<Menu> subMenus = ViewBag.SubMenus;
+			foreach (Menu item in ViewBag.ParentMenus)
+			{
+				string url = Url.Content("~/" + item.Link.Replace("~/", ""));
+				if (item.Link.Contains("http") || item.Link.Contains("https")) url = item.Link;
+
+				String menuClass = "";
+				foreach (Menu sm in subMenus)
+				{
+					if (sm.ParentId == item.Id)
+					{
+						menuClass = "hasSub";
+						break;
+					}
+				}
+
+
+				<li id='nav-services' class='@menuClass'><a id='link-services' href='@url'
+						title='@item.Name'><span>@item.Name</span></a>
+					@{
+						if (menuClass == "hasSub")
+						{
+							<div class='drop-down' style=''>
+								<div class='container'>
+									<ul>
+										@foreach (Menu sm in subMenus)
+										{
+											if (sm.ParentId == item.Id)
+											{
+												string url2 = Url.Content("~/" + sm.Link.Replace("~/", ""));
+												if (sm.Link.Contains("http") || sm.Link.Contains("https")) url2 = sm.Link;
+												<li><a href='@url2'>@sm.Name</a></li>
+											}
+										}
+									</ul>
+								</div>
+							</div>
+						}
+					}
+
+				</li>
+			}
+		}
+	</ul>
+</nav>
+<div class="row-fluid newsbar-wrap" style="background:rgba(0,0,0,0.5);">
+	<div class="brnews span10 col-xs-11" style="padding-right:0;width:91%;    FLOAT: left;padding-top:5px">
+		<div class="simply-scroll simply-scroll-container" style="width:114%;">
+			<div class="simply-scroll-clip">
+				<div style="direction:ltr;color:White;font-size:15px;overflow: hidden;" class="marquee">
+					@{
+						if (ViewBag.FastNews != null)
+						{
+							List<PageCategory> fastNews = ViewBag.FastNews;
+							foreach (PageCategory item in fastNews)
+							{
+								<img style='margin:0 30px;width: 20px;' src='~/web-front/images/logop.png'> <a
+									href="@Url.Action("Details","Pages",new{id=item.Page.PageId,title=item.Page.Title})">
+									@item.Page.Title</a>
+							}
+						}
+					}
+					@* <img style='margin:0 30px;width: 20px;' src='~/web-front/images/logop.png'> <a
+					href=ar_page.aspx?id=i8cZhpa6737459487ai8cZhp> دعوة لتقديم عروض لخدمة استشارية </a> <img
+					style='margin:0 30px;width: 20px;' src='~/web-front/images/logop.png'> <a
+					href=ar_page.aspx?id=i8cZhpa6736507734ai8cZhp> اعلان استملاك </a> <img
+					style='margin:0 30px;width: 20px;' src='~/web-front/images/logop.png'> <a
+					href=ar_page.aspx?id=i8cZhpa6735555981ai8cZhp> اعلان طرح مناقصه توريد وتركيب خزائن ارشيف
+					</a> <img style='margin:0 30px;width: 20px;' src='~/web-front/images/logop.png'> <a
+					href=ar_page.aspx?id=i8cZhpa6729845463ai8cZhp> اعلان شاغر وظيفة رئيس شعبة الرواتب
+					والاجور </a> <img style='margin:0 30px;width: 20px;' src='~/web-front/images/logop.png'>
+					<a href=ar_page.aspx?id=i8cZhpa6723183192ai8cZhp> مهرجان وين ع رام الله 14 </a> *@
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="search span2 col-xs-1 newsbar" style="padding:0px;margin-left:0;width:9%;position: relative;">
+		<div class="offset1" style="margin-left:0 ;    BACKGROUND-COLOR: #403f3f;">
+			<h3
+				style="padding-right: 10px;padding-top: 2px;padding-left: 10px; margin-top: 0;margin-bottom: 0;background: rgb(64, 63, 63);text-align: center;color: #fff;font-size: 1.3rem;height: 40px; text-align: center; /* WIDTH: 109%; */ PADDING-RIGHT: 10PX;">
+				شريط الأخبار</h3>
+		</div>
+	</div>
+</div>
+<!--/#navigation-->

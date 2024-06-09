@@ -1,0 +1,212 @@
+﻿@{
+	var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="~/web-front/css/style.css">
+	<link rel="stylesheet" href="~/web-front/css/home/style.css">
+	<link rel="stylesheet" href="~/web-front/css/mini-bootstrap.css">
+	<link rel="stylesheet" href="~/web-front/css/mystyle.css">
+	<link rel="icon" type="image/png" href="~/web-front/images/logop.png" />
+	<link rel="stylesheet" type="text/css" href="~/web-front/tooltipster-master/dist/css/tooltipster.bundle.min.css" />
+	<style>
+		hr {
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			border: 0;
+			border-top: 1px solid rgba(0, 0, 0, .1);
+		}
+
+		hr {
+			box-sizing: content-box;
+			height: 0;
+			overflow: visible;
+		}
+
+		@@media(max-width:767px) {
+			.brnews {
+				width: 71% !important;
+				FLOAT: left !important;
+				padding-top: 5px;
+			}
+
+			.newsbar h3 {
+				padding-top: 5px !important;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				font-size: 1rem !important;
+			}
+
+			.newsbar {
+				width: 24% !important;
+				float: right;
+			}
+
+			.newsbar-wrap {
+				height: 34px;
+				width: 100%;
+				overflow: hidden;
+			}
+		}
+
+		.js-marquee {
+			direction: rtl;
+		}
+	</style>
+
+	<META HTTP-EQUIV="Description" CONTENT="بلدية رام الله">
+	<META HTTP-EQUIV="Keywords" CONTENT="بلدية رام الله">
+	<title>بلدية رام الله</title>
+	<meta property="og:image" content="https://www.ramallah.ps/images/logo2.png" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151998155-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-151998155-1');
+	</script>
+
+	<!-- Facebook Pixel Code -->
+	<script>
+		!function (f, b, e, v, n, t, s) {
+			if (f.fbq) return; n = f.fbq = function () {
+				n.callMethod ?
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+			n.queue = []; t = b.createElement(e); t.async = !0;
+			t.src = v; s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '335466573675583');
+		fbq('track', 'PageView');
+	</script>
+	<noscript>
+		<img height="1" width="1" src="https://www.facebook.com/tr?id=335466573675583&ev=PageView&noscript=1" />
+	</noscript>
+	<!-- End Facebook Pixel Code -->
+	<style>
+		.popup button {
+			padding: 5px;
+			background: #fff;
+			border-top-right-radius: 0;
+			border-top-left-radius: 5px;
+			padding-bottom: 0;
+		}
+
+		.popup {
+			position: fixed;
+			z-index: 9999999;
+			bottom: 0;
+		}
+	</style>
+</head>
+
+<body dir="rtl" style="position:relative" class="index home home" data-page="home" data-section="home">
+
+	<!-- Top Area -->
+	<div class="popup hide">
+		<button type="button"><img src="~/web-front/images/close.png" alt="close"></button>
+		<div><a href="ar_page.aspx?id=gSQN5Wa6590889525agSQN5W"><img style="max-width:400px"
+					src="@Url.Content("files/image/2023/main_.jpg")"></a></div>
+	</div>
+
+	<header id="main-header">
+		<div class="wrapper logo hide">
+			<a href="/" id="logo">
+				<img src="~/web-front/images/logo2.png" />
+			</a>
+			<!-- <button type="button" id="toggleMenu">Menu</button> -->
+		</div>
+		<div class="logo">
+
+			<a href="/" id="logo2">
+				<img src="~/web-front/images/logo2.png" />
+			</a>
+			<a href="#" class="ramallah" style="background: #2d2d2d;border-radius: 10px;margin-right: 2em;;width:50px;">
+				<button type="button" class="toggle-menu cmn-toggle-switch__htx">
+					<span>toggle menu</span>
+				</button>
+			</a>
+			<a href="#" class="ramallah active" style="border: 3px solid #fff;">
+				<img src="~/web-front/images/بلدية رام الله.png" />
+			</a>
+			<a href="https://ramallahcity.ramallah.ps" target="_blank" class="ramallah">
+				<img src="~/web-front/images/مدينة رام الله.png" />
+			</a>
+
+			<span style="position: absolute;top: 2rem;right: 42%;padding: 5px;border: 1px solid #ff4949;;display:none">
+				الموقع قيد التحديث والتطوير
+			</span>
+		</div>
+		@await Component.InvokeAsync("TopMenu")
+	</header>
+
+	@RenderBody()
+
+
+	<!-- ########### End Page content ######### -->
+
+	<!-- Footer -->
+	<footer>
+		@await Component.InvokeAsync("FooterMenu")
+
+	</footer>
+	<a href="#" id="backToTop" title="Back to Top">العودة للاعلى</a>
+	<!-- All the JavaScripts!
+//////////////////////////// -->
+	<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+	<script src="~/web-front/js/jquery.3.7.1.min.js"></script>
+
+
+	<script type="text/javascript" src="~/web-front/tooltipster-master/dist/js/tooltipster.bundle.min.js"></script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+
+	<script src="~/web-front/js/services.min.js"></script>
+
+	<script src="~/web-front/js/search.min.js"></script>
+
+	<!-- Script overrides for each Section -->
+	<script src="~/web-front/js/pages/home/section.js"></script>
+	<link rel="stylesheet" href="~/web-front/css/jquery.bxslider.css" />
+	<script src="~/web-front/js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="~/web-front/jquery.marquee/lib/jquery.marquee.js"></script>
+	<script type='text/javascript' src='~/web-front/js/jquery.marquee.min.js'></script>
+	<script>
+		$('.slider').bxSlider({
+			mode: 'fade',
+			auto: true,
+			controls: false,
+			pager: false
+		});
+		$(document).ready(function () {
+			$(".popup button").click(function () {
+				$(".popup").hide();
+			})
+			$('.tooltip').tooltipster({
+				side: 'left'
+			});
+		});
+		$(document).ready(function () {
+			$('.marquee').marquee({
+				direction: 'right',
+				pauseOnHover: true,
+				duration: 15000
+			});
+			$("#marquee").marquee();
+		});
+	</script>
+	@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

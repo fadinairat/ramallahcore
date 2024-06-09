@@ -1,0 +1,39 @@
+﻿@model Ramallah.Models.User
+@using Microsoft.Extensions.Localization
+@using Ramallah.Areas.Control.Controllers
+@inject IStringLocalizer<HomeController> Localizer
+@inject IHttpContextAccessor HttpContextAccessor    
+@{
+    ViewData["Title"] = @Localizer["Access Denied"];
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1 class="m-0">@Localizer["Access Denied"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Dashboard"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content" style="min-height:600px;">
+<div class="container-fluid">
+    <div class="text-center">
+        <div class="text-center mb-5 mt-5" style="font-size:200px;color:red;"><i class="bi bi-exclamation-octagon-fill"></i></div>
+        <h1 class="mb-3" style="text-align:center;">@Localizer["Access Denied"]</h1>
+        <h5>@Html.Raw(Localizer["Access Denied Message"])</h5>
+    </div>
+</div>  
+</section>

@@ -1,0 +1,224 @@
+﻿@model IEnumerable<Ramallah.Models.FormsEntries>
+@using Ramallah.Models
+@inject IStringLocalizer<HomeController> Localizer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Forms"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Forms"]</a></li>
+                    <li class="breadcrumb-item active">@Localizer["Forms"]</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-6 text-start"><h1 class="form-title">@Localizer["Form Entries"] @(ViewBag.FormTitle != null ? Html.Raw("<span style='text-brown' >(" + ViewBag.FormTitle + ")</span>") : "")</h1></div>
+            @{
+                if(ViewBag.FormId != null)
+                {
+                    <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="ExportToExcel" asp-route-formId="@ViewBag.FormId" asp-route-status="@ViewBag.Status" target="_blank"><i class="fas fa-file-excel"></i> @Localizer["Export To Excel"]</a></div>
+                }
+            }
+        </div>
+        <form asp-action="Results">
+            <div class="row mb-3">
+               
+                @*<div class="col-6 col-md-3">
+                    <label for="slang">Language:</label>
+                    <select name="slang" id="slang" class="form-control">
+                        <option value="">:: SELECT Language ::</option>
+                        
+                    </select>
+                </div>*@
+                <div class="col-6 col-md-3">
+                    <label for="sType">@Localizer["Form Type"]</label>
+                    <select name="sType" class="form-control">
+                        <option value="">@Localizer["All Types"]</option>
+                        <!option value="false" @(ViewBag.Type!=null && ViewBag.Type==false ? "SELECTED":"") >@Localizer["Public Form"]</!option>
+                        <!option value="true" @(ViewBag.Type!=null && ViewBag.Type==false ? "SELECTED":"") >@Localizer["Job Application Form"]</!option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-3">
+                    <label for="formId">@Localizer["Form"]</label>
+                    <select name="formId" class="form-control">
+                        <option value="">@Localizer["All Forms"]</option>
+                        @{
+                            if (ViewBag.Forms != null)
+                            {
+                                foreach(Forms form in ViewBag.Forms)
+                                {
+                                    <!option value="@form.Id" @(ViewBag.FormId!=null && ViewBag.FormId == form.Id ? "SELECTED":"") >@(currentCulture == "en" ? form.Title : form.ArTitle)</!option>
+                                }
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-6 col-md-2"><br /><button type="submit" asp-action="Index" class="btn btn-primary mt-2">@Localizer["Search"]</button></div>
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.FormId)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AddedTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IpAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Type)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @(currentCulture == "en" ? item.Form.Title : item.Form.ArTitle)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AddedTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IpAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Type)
+                        </td>
+                        <td>
+                            <span class="link-sp show-details btn btn-info btn-sm" data-id="@item.Id" data-title="@item.Form.Title" title="Answers" alt="Answers"><i class="far fa-question-circle"></i></span>
+                            @*<a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id" title="Entry Details" alt="Entry Details"><i class="far fa-chart-bar"></i></a>
+                            <a asp-route-id="@item.Id" class="btn btn-danger btn-sm" asp-action="Delete"><i class="fas fa-trash"></i> </a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @if (ViewBag.PagesCount != null && ViewBag.PagesCount > 0)
+        {
+            <div class="text-center d-flex justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" asp-action="Results" asp-route-PageNumber="1">@Localizer["First"]</a></li>
+                        @{
+                            double pages = ViewBag.PagesCount;
+                            int current = ViewBag.CurrentPage;
+                            int start = 1;
+                            double end = pages;
+                            if (pages > 10)
+                            {
+                                if (pages >= (current + 5)) end = current + 5;
+                                else end = pages;
+
+                                if (current > 5) start = current - 5;
+                                else start = 1;
+                            }
+
+                            for (int i = start; i <= end; i++)
+                            {
+                                string active = "";
+                                if (ViewBag.CurrentPage != null && ViewBag.CurrentPage == i) active = " active";
+                                <li class="page-item @active"><a class="page-link" asp-action="Results" asp-route-PageNumber="@i">@i</a></li>
+                            }
+                        }
+                        <li class="page-item"><a class="page-link" asp-action="Results" asp-route-PageNumber="@ViewBag.PagesCount">@Localizer["Last"]</a></li>
+                    </ul>
+                </nav>
+            </div>
+        }
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="@Localizer["Close"]">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">                    
+                    <div id="msg_cont"></div>                    
+                    <div id="answersCont"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">@Localizer["Close"]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+@section Scripts{
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $(document).on("click",".show-details",function(){
+            $("#detModal").modal("show");
+            $("#msg_cont").html("");
+            $("#answersCont").html("");
+            $("#msg_cont").html('<div class="text-center mt-4" id="loader" ><i class="fas fa-spinner fa-spin"></i></div>');
+            var id = $(this).data("id");
+            var formTitle = $(this).data("title")
+            $("#detModalLabel").html(formTitle);
+
+            if(id!=""){
+                var url = "@Url.Action("ResultDetails", "Forms")?resId=" + id;
+                $.ajax({
+                    url: url,
+                    dataType: "json"
+
+                }).done(function (data) {
+                    $("#loader").html("");
+                    var html_result = "<table class='table table-bordered table-striped' ><tbody>";
+                    if (data.result) {
+                        $("#answersCont").html("");
+                        for (var i = 0; i < data.answers.length; i++) {
+                            var row = data.answers[i];
+                            html_result += "<tr>"; 
+                            html_result += "<td><b><span class='text-red' >#"+(i+1)+"</span> - " + row.label + "</b></td></tr><tr><td>";
+                            if(row.type=="file"){
+                                html_result +="<a href='/Control/Home/GetFile?path="+row.answer+"' target='_blank'>@Localizer["Download"]</a>";
+                            }
+                            else{
+                                html_result += "" + row.answer + "";
+                            }
+                            html_result +="</td>";
+                            html_result += "</tR>";
+                        }
+                    }
+                    else {
+                        $("#msg_cont").html("<div class='alert alert-danger' >" + data.msg + "</div>");
+                    }
+                    html_result += "</tbody></table>";
+                    $("#answersCont").html(html_result);
+                });
+            }
+
+        });
+    });
+    </script>
+}

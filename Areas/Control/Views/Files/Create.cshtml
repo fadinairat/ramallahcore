@@ -1,0 +1,249 @@
+﻿@model Ramallah.Models.Files
+@using Ramallah.Models
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1 class="m-0">@Localizer["Files"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Files"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-6 text-@Localizer["Float"]" ><h1 class="form-title">@Localizer["Add New File"]</h1></div>  
+    <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link" ><a asp-action="Index" ><i class="bi bi-list-ul"></i> @Localizer["List All Files"]</a></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data" >
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-12 col-md-6">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label asp-for="ArName" class="control-label"></label>
+                    <input asp-for="ArName" class="form-control" style="text-align:right;direction:rtl;" />
+                    <span asp-validation-for="ArName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-6 col-md-3">
+                    <label for="Type" class="control-label">@Localizer["File Type"]</label>                    
+                    <select name="Type" id="Type" class ="form-control" >                        
+                        @{
+                            List<CategoryTypes> types = ViewBag.Types;
+                            foreach (CategoryTypes temp in types)
+                            {                                                   
+                                <!option value="@temp.Id" "@(temp.Id == 2 ? "Selected" : "" )">@(currentCulture == "en" ? temp.Title : temp.ArTitle)</!option>
+                            }
+                        }
+                    </select>
+
+                </div>
+                <div class="form-group col-6 col-md-3">
+                    <label asp-for="CatId" class="control-label"></label>
+                    <select asp-for="CatId" data-val="true" required class="form-control input-validation-error" data-val-required="@Localizer["Category Required"]" >
+                        <option value="" >:: @Localizer["Select Category"] ::</option>
+                        @{
+                            List<Category> cats = ViewBag.Cats;
+                            foreach (Category temp in cats)
+                            {                                                   
+                                <option value="@temp.Id">@(currentCulture == "en" ? temp.Name : temp.ArName)</option>
+                            }
+                        }
+                    </select>
+                    <span class="text-danger field-validation-error" data-valmsg-for="CatId" data-valmsg-replace="true"></span>
+                </div>
+               @* <div class="form-group col-6 col-md-3">
+                    <label asp-for="Parent" class="control-label"></label>
+                    <input asp-for="Parent" class="form-control" />
+                    <span asp-validation-for="Parent" class="text-danger"></span>
+                </div>*@
+                <div class="form-group col-6 col-md-3">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-md-3">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                 <div class="form-group col-6 col-md-3">
+                    <label asp-for="LangId" class="control-label"></label>
+                    <select asp-for="LangId" class ="form-control" asp-items="ViewBag.LangId"></select>
+                </div>
+
+                <div class="form-group col-6 col-md-3">
+                    <label asp-for="Priority" class="control-label"></label>
+                    <input asp-for="Priority" class="form-control" value="999999"/>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FilePath" class="control-label"></label>
+                <input asp-for="FilePath" type="file" class="form-control" />
+                <span asp-validation-for="FilePath" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="Source" class="control-label"></label>
+                <textarea asp-for="Source" class="form-control" rows="6" ></textarea>
+                <span asp-validation-for="Source" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Thumb" class="control-label"></label>
+                <input asp-for="Thumb" type="file" class="form-control" />
+                <span asp-validation-for="Thumb" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" ></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArDescription" class="control-label"></label>
+                <textarea asp-for="ArDescription" class="form-control" ></textarea>
+                <span asp-validation-for="ArDescription" class="text-danger"></span>
+            </div>
+
+             <div class="row">
+                 <div class="form-group col-4 col-sm-3">
+                    <label asp-for="Publish" class="control-label"></label>
+                    <input asp-for="Publish" type="checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="Publish" class="text-danger"></span>
+                </div>
+                <div class="form-group col-4 col-sm-3">
+                    <label asp-for="Active" class="control-label"></label>
+                    <input asp-for="Active" type="checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="Active" class="text-danger"></span>
+                </div>
+                 <div class="form-group col-4 col-sm-3">
+                    <label asp-for="ShowHome" class="control-label"></label>
+                    <input asp-for="ShowHome" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="ShowHome" class="text-danger"></span>
+                </div>
+                <div class="form-group col-4 col-sm-3">
+                    <label asp-for="AllowComment" class="control-label"></label>
+                    <input asp-for="AllowComment" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="AllowComment" class="text-danger"></span>
+                </div>
+            </div>
+
+                    <div class="form-group text-center">
+                <input type="submit" value="@Localizer["Save File"]" class="btn btn-primary float-start" />&nbsp;&nbsp;
+                <a asp-action="Index" class="btn btn-danger float-end">@Localizer["Back To List"]</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</div>
+</section>
+@section Scripts{
+    {
+        <partial name="_ValidationScriptsPartial" >
+    }
+    <script type="text/javascript" >
+        $(document).ready(function(){
+            $("#Type").change(function(){     
+                var type = $("#Type").val();
+        
+                var url = "@Url.Action("getFilesCategories", "Files")?type="+type;        
+                $("#CatId").empty();
+                $.ajax({
+                    url: url,      
+                    dataType: "json",
+                    beforeSend: function() {
+                        $("#CatId").hide();
+                        $("#CatId").before($('<i class="fa fa-spinner fa-spin fa-3x fa-fw k_loader" id="m_loader"></i> '));
+                    },    
+                    success: function (data) {      
+                        if(data.success){
+                            var cats = data.cats;
+                            $("#CatId").append($('<option></option>').val("").html(":: @Localizer["Select Category"] ::"));
+                            for(var i=0;i<cats.length;i++){
+                                $("#CatId").append($('<option></option>').val(cats[i].id).html(@(currentCulture == "en" ? "cats[i].name": "cats[i].name")));                   
+                            }   
+                        }
+                        else{
+
+                        }
+                                                                    
+                    },
+                    error: function (jqXhr, json, errorThrown) {
+                        try{
+                            var errors = jqXhr.responseJSON.errors;                       
+                            console.log(errors);
+                        }
+                        catch(eee){
+                            console.log(eee.message);
+                        }
+                    },
+                    complete: function () {
+                       //alert("complete");
+                        $("#m_loader").remove();
+                       $("#CatId").show();               
+                    }
+                });
+            
+            });
+        });    
+    </script>
+
+    <script type="text/javascript" >
+    $(function(){   
+        $("input[data-bootstrap-switch]").each(function(){
+          $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+    });
+    </script>
+
+    <script>$(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('Description', {
+            language: 'en',
+            uiColor: '#f8f9fa',
+            contentsLangDirection: 'ltr',
+            height: 300,
+            baseFloatZIndex: 10005
+        });
+        CKEDITOR.replace('ArDescription', {
+            language: 'ar',
+            uiColor: '#f8f9fa',
+            contentsLangDirection: 'rtl',
+            height: 300,
+            baseFloatZIndex: 10005
+        });
+        //bootstrap WYSIHTML5 - text editor
+        //$(".textarea").wysihtml5();
+    });
+    </script>
+}

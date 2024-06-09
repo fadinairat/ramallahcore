@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Ramallah.Models.User>
+@{
+    ViewData["Title"] = "Users List";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Users"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Users"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-6 text-start"><h1 class="form-title">@Localizer["List All Users"]</h1></div>
+    @if (Functions.CheckAccess("Create", "Users", "Control", HttpContextAccessor.HttpContext))
+    {
+        <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="Create"><i class="bi bi-plus-circle"></i> @Localizer["Add New User"]</a></div>
+    }
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fullname)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.GroupId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoginName)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LangId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastLogin)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fullname)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @(currentCulture == "en" ? item.Language?.Name : item.Language?.ArName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastLogin)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+           
+            <td>                
+                @if (Functions.CheckAccess("Edit", "Users", "Control", HttpContextAccessor.HttpContext))
+                {
+                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pencil-alt"></i> </a> 
+                }
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-folder"></i> </a> 
+                @if (Functions.CheckAccess("Delete", "Users", "Control", HttpContextAccessor.HttpContext))
+                {
+                    <a asp-route-id="@item.Id" class="btn btn-danger btn-sm" asp-action="Delete"><i class="fas fa-trash"></i> </a>
+                }
+            </td>
+        </tr>}
+    </tbody>
+</table>
+</div>
+</section>
+
+@section Scripts{
+    <script type="text/javascript">
+       
+    </script>
+
+}

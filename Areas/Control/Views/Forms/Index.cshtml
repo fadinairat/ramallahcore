@@ -1,0 +1,201 @@
+﻿@model IEnumerable<Ramallah.Models.Forms>
+@using Ramallah.Models
+@using Microsoft.Extensions.Localization
+@using Ramallah.Areas.Control.Controllers
+@using Ramallah.Helpers
+@inject IStringLocalizer<HomeController> Localizer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Forms"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Forms"]</a></li>
+                    <li class="breadcrumb-item active">@Localizer["Forms"]</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-6 text-start"><h1 class="form-title">@Localizer["List All Forms"]</h1></div>
+            <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="Create"><i class="bi bi-plus-circle"></i> @Localizer["Add New Form"]</a></div>
+        </div>
+        <form asp-action="Index">
+            <div class="row mb-3">
+                <div class="col-6 col-md-3">
+                    <label for="keyword">@Localizer["Keyword"]:</label>
+                    <input type="text" placeholder="@Localizer["Keyword"]" class="form-control" name="keyword" id="keyword" value="@ViewBag.keyword" />
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label for="slang">@Localizer["Language"]:</label>
+                    <select name="slang" id="slang" class="form-control">
+                        <option value="">:: @Localizer["Select Language"] ::</option>
+                        @{
+                            List<Language> langs = ViewBag.Languages;
+                            foreach (Language temp in langs)
+                            {
+                                <!option value="@temp.Id" @(ViewBag.Language!=null && ViewBag.Language == temp.Id ? "SELECTED" : "")>@(currentCulture =="en" ? temp.Name : temp.ArName)</!option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="col-6 col-md-3">
+                    <label for="sType" >@Localizer["Form Type"]</label>
+                    <select name="sType" class="form-control">
+                        <option value="">@Localizer["All Types"]</option>
+                        <!option value="0" @(ViewBag.Type!=null && ViewBag.Type==0 ? "SELECTED":"") >@Localizer["Public Form"]</!option>
+                        <!option value="1" @(ViewBag.Type!=null && ViewBag.Type==1 ? "SELECTED":"") >@Localizer["Job Application Form"]</!option>
+                        <!option value="2" @(ViewBag.Type!=null && ViewBag.Type==2 ? "SELECTED":"") >@Localizer["Project/Employer Form"]</!option>
+                    </select>
+                </div>
+                <div class="col-6 col-md-2"><br /><button type="submit" asp-action="Index" class="btn btn-primary mt-2">@Localizer["Search"]</button></div>
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>@Localizer["Applications Count"]</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Direction)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LangId)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.IsJobForm)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AddedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AddedTime)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <th>@item.FormsEntries?.Count()</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Direction)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Language.Name)
+                        </td>
+                        <td>
+                            @{
+                                if(item.Type ==0)
+                                {
+                                    <span>@Localizer["Public Form"]</span>
+                                }
+                                else if(item.Type == 1){
+                                    <span>@Localizer["Job Application Form"]</span>
+                                }
+                                else if(item.Type == 2)
+                                {
+                                    <span>@Localizer["Project/Employer Form"]</span>
+                                }
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Fullname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StartDate)
+                            <Br>
+                            @Html.DisplayFor(modelItem => item.ExpireDate)                        
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AddedTime)
+                        </td>
+                        <td>
+                            @if (Functions.CheckAccess("Edit", "Forms", "Control", HttpContextAccessor.HttpContext))
+                            {
+                                <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-pencil-alt"></i> </a>
+                            }
+                            @if (Functions.CheckAccess("Results", "Forms", "Control", HttpContextAccessor.HttpContext))
+                            {
+                                <a class="btn btn-info btn-sm" asp-action="Results" asp-route-formId="@item.Id" target="_blank" title="@Localizer["Applications"]" alt="@Localizer["Applications"]"><i class="far fa-chart-bar"></i></a>
+                            }
+                            @if (Functions.CheckAccess("Fields", "Forms", "Control", HttpContextAccessor.HttpContext))
+                            {
+                                <a class="btn btn-info btn-sm" asp-action="Fields" asp-route-id="@item.Id" title="@Localizer["Fields List"]" alt="@Localizer["Fields List"]"><i class="far fa-question-circle"></i></a>
+                            }
+                            @if (Functions.CheckAccess("Preview", "Forms", "Control", HttpContextAccessor.HttpContext))
+                            {
+                                <a class="btn btn-success btn-sm" asp-action="Preview" asp-route-id="@item.Id" target="_blank" title="@Localizer["Preview"]" alt="@Localizer["Preview"]"><i class="far fa-eye"></i></a>
+                            }
+                            @*
+                            if (Functions.CheckAccess("ExportToExcel", "Forms", "Control", HttpContextAccessor.HttpContext))
+                            // {
+                            //     <a class="btn btn-warning btn-sm" target="_blank" asp-controller="Forms" asp-action="ExportToExcel" asp-area="Control" asp-route-formId="@item.Id" target="_blank" title="@Localizer["Export Form Result"]" alt="@Localizer["Export Forms Result"]"> <i class="far fa-file-excel"></i></a>
+                            // }
+                            *@
+                            @if (Functions.CheckAccess("Delete", "Forms", "Control", HttpContextAccessor.HttpContext))
+                            {
+                            <a asp-route-id="@item.Id" class="btn btn-danger btn-sm" asp-action="Delete"><i class="fas fa-trash"></i> </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+        @if (ViewBag.PagesCount != null && ViewBag.PagesCount > 0)
+        {
+            <div class="text-center d-flex justify-content-center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="1">@Localizer["First"]</a></li>
+                        @{
+                            double pages = ViewBag.PagesCount;
+                            int current = ViewBag.CurrentPage;
+                            int start = 1;
+                            double end = pages;
+                            if (pages > 10)
+                            {
+                                if (pages >= (current + 5)) end = current + 5;
+                                else end = pages;
+
+                                if (current > 5) start = current - 5;
+                                else start = 1;
+                            }
+
+                            for (int i = start; i <= end; i++)
+                            {
+                                string active = "";
+                                if (ViewBag.CurrentPage != null && ViewBag.CurrentPage == i) active = " active";
+                                <li class="page-item @active"><a class="page-link" asp-action="Index" asp-route-PageNumber="@i">@i</a></li>
+                            }
+                        }
+                        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="@ViewBag.PagesCount">@Localizer["Last"]</a></li>
+                    </ul>
+                </nav>
+            </div>
+        }
+        
+    </div>
+</section>

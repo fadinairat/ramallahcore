@@ -1,0 +1,187 @@
+﻿@model Ramallah.Models.Group
+@using Ramallah.Models
+@{
+    ViewData["Title"] = "Edit Group";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Groups"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Groups"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+            <div class="col-6 text-@Localizer["Float"]"><h1 class="form-title">@Localizer["Edit Group"]</h1></div>
+            <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="Index"><i class="bi bi-list-ul"></i> @Localizer["List All Groups"]</a></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArName" class="control-label"></label>
+                <input asp-for="ArName" class="form-control" />
+                <span asp-validation-for="ArName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LangId" class="control-label"></label>
+                <select asp-for="LangId" class="form-control" asp-items="ViewBag.LangId"></select>
+                <span asp-validation-for="LangId" class="text-danger"></span>
+            </div>
+
+            <div style="display:none;">
+            <div class="row"><div class="col-12 text-left"><h3 class="form-title">@Localizer["Pages"]</h3></div></div>
+
+            <div class="row">
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P1" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P1" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success">
+                    
+                    <span asp-validation-for="P1" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P2" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P2" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P2" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P3" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P3" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P3" class="text-danger"></span>
+                </div>
+            </div>
+
+                        <div class="row"><div class="col-12 text-left"><h3 class="form-title">@Localizer["Categories"]</h3></div></div>
+
+            <div class="row">
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P4" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P4" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P4" class="text-danger"></span>
+                </div>
+
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P5" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P5" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P5" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P6" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P6" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P6" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row"><div class="col-12 text-left"><h3 class="form-title">@Localizer["General Permission"]</h3></div></div>
+
+            <div class="row">
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P7" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P7" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P7" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P8" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P8" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P8" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P9" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P9" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P9" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P10" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P10" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P10" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P11" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P11" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P11" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="P12" class="control-label" style="width:60%;"></label>
+                    <input asp-for="P12" type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    <span asp-validation-for="P12" class="text-danger"></span>
+                </div>
+              
+            </div>
+            </div>
+            <hr class="mt-3 mb-3"/>
+
+            <div class="row">
+                @{
+                    var newCont = "";
+                    var oldCont = "";
+                    foreach(Permissions item in ViewBag.Permissions)    
+                    {                        
+                        if (item.Controller != oldCont)
+                        {
+                            oldCont = item.Controller;
+                            <div class="col-12"><h5>@(item.Controller == "Home" ? "General" : (item.Controller=="Members" ? "Job Seekers" : item.Controller))</h5></div>
+                        }
+                        String Checked = "";
+                        if(ViewBag.GroupPermissions != null)
+                        {
+                            foreach(GroupPermissions gp in ViewBag.GroupPermissions)
+                            {
+                                if(gp.PermissionId == item.Id)
+                                {
+                                    Checked = "CHECKED";
+                                }
+                            }
+                        }
+                        <div class="col-3 mb-2">
+                            <label for="p_@item.Id" style="width:60%;">@item.Name</label>
+                            <input name="p_@item.Id" id="p_@item.Id" @Checked type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                        </div>
+                        
+                    }
+                }
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="@Localizer["Save Changes"]" class="btn btn-primary" />&nbsp;&nbsp;
+                <a asp-action="Index" class="btn btn-danger float-end">@Localizer["Back To List"]</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+</section>
+@section Scripts{
+    {
+        <partial name="_ValidationScriptsPartial" >
+    }
+    <script type="text/javascript" >
+    $(function(){   
+        $("input[data-bootstrap-switch]").each(function(){
+          $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+    });
+    </script>
+}

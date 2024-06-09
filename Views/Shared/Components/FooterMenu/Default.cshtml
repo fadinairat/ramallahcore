@@ -1,0 +1,95 @@
+﻿@using Ramallah.Models
+@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="wrapper">
+	<div class='flex-item'>
+		<h4 id='footerHelp' class='footer-title'><a href='#'> البلدية</a></h4>
+		@{
+			if (ViewBag.MunMenus != null)
+			{
+				List<Menu> menus = ViewBag.MunMenus;
+				foreach (Menu item in menus)
+				{
+					string url = Url.Content("~/" + item.Link.Replace("~/", ""));
+					if (item.Link.Contains("http") || item.Link.Contains("https")) url = item.Link;
+					<ul>
+						<li><a href='@url'>@item.Name</a></li>
+					</ul>
+				}
+			}
+		}
+	</div>
+	<div class='flex-item'>
+		<h4 id="footerHelp" class="footer-title"><a href="http://ramallahcity.ramallah.ps">المدينة</a></h4>
+		@{
+			if (ViewBag.CityMenus != null)
+			{
+				List<Menu> menus = ViewBag.CityMenus;
+				foreach (Menu item in menus)
+				{
+					string url = Url.Content("~/" + item.Link.Replace("~/", ""));
+					if (item.Link.Contains("http") || item.Link.Contains("https")) url = item.Link;
+					<ul>
+						<li><a href='@url'>@item.Name</a></li>
+					</ul>
+				}
+			}
+		}
+	</div>
+
+	<div class='flex-item'>
+		<h4 id='footerHelp' class='footer-title'><a href='#'>روابط</a></h4>
+		<ul>
+			<li><a href='http://visitramallah.ramallah.ps/'>مركز رام الله للمعلومات لسياحية</a></li>
+			<li><a href='https://www.ramallah-gis.ps/'>متصفح الخرائط</a></li>
+			<li><a href='https://eservices.ramallah.ps/eservices/Service/GetAllServiceOnline'>موقع الخدمات
+					الالكترونية</a></li>
+			<li><a href='https://culture.ramallah.ps/'>قصر رام الله الثقافي</a></li>
+		</ul>
+
+		<br><br>
+		<h4 id='footerAlerts' class='footer-title'><a href='ar_page.aspx?id=eEs1k0a264587334aeEs1k0'>تواصل معنا</a></h4>
+		<div style='direction:rtl;color:#fff;text-align:right'>
+			@{
+				if (ViewBag.FooterDesc != null)
+				{
+					Page contact = ViewBag.FooterDesc;
+					@Html.Raw(contact.Summary)
+				}
+			}
+		</div>
+		<hr color='#fff'><a class='social facebook' href='https://www.facebook.com/R.Municipality/' target='_blank'><img
+				src='~/web-front/images/facebook-f.svg' /></a><a class='social twitter'
+			href='https://twitter.com/Ramallah_Muni?lang=en' target='_blank'><img
+				src='~/web-front/images/twitter.svg' /></a><a class='social googleplus'
+			href='https://www.youtube.com/channel/UCBrajD-OERgjk6EsnKYzAHg' target='_blank'><img
+				src='~/web-front/images/youtube.svg' /></a><a class='social instagram'
+			href='https://www.instagram.com/ramallahmunicipality/' target='_blank'><img
+				src='~/web-front/images/instagram.svg' /></a><br><br>
+		<p style='clear:both;color:#fff'>تطبيق بلدية رام الله</p><a class='pull-left mobapp' target='_blank'
+			href='https://apps.apple.com/app/id1387280385?fbclid=IwAR3I6IMMwSIk_bq5FDzU0_6O6Wa4m5YufVlYFGMlvH9mTwjF6rlMB6eiVGU'><img
+				style='max-height:40px;float:right;margin-left:10px' class='img-responsive'
+				src='~/web-front/images/applestore.png'></a><a class='pull-left mobapp' target='_blank'
+			href='https://play.google.com/store/apps/details?id=app.intertech.ramallah'><img
+				style='max-height:40px;float:right' class='img-responsive'
+				src='~/web-front/images/playstore.png'></a><br><br><br>
+		<p style='clear:both;color:#fff'>تطبيق تك بارك</p><a class='pull-left mobapp' target='_blank'
+			href='https://play.google.com/store/apps/details?id=co.tecpark.tecpark&fbclid=IwAR0xCjrTnQEsNAh4nHMP4kvZB2PauI2VzXsOCzYdoBsMkrIYxJ6bRZG7OkU'><img
+				style='max-height:40px;float:right;margin-left:10px' class='img-responsive'
+				src='~/web-front/images/applestore.png'></a><a class='pull-left mobapp' target='_blank'
+			href='https://apps.apple.com/us/app/tec-park-palestine/id1435874168'><img
+				style='max-height:40px;float:right' class='img-responsive' src='~/web-front/images/playstore.png'></a>
+	</div>
+
+
+</div>
+<div class="wrapper">
+	<div style="background:#858486;height:1px;width:100%"></div>
+</div>
+<div class="wrapper">
+	<img class="" src="~/web-front/images/logo2.png" />
+	<p class="copyright">جميع الحقوق محفوظة، بلدية رام الله &copy; 2018</p>
+</div>

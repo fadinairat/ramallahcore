@@ -1,0 +1,121 @@
+﻿body {
+}
+.form-box {
+    border: solid 1px #ccc;
+    border-radius: 7px;
+    box-shadow: #ccc 0px 4px 12px 4px;
+    padding: 15px;
+}
+.prod-cont {
+    height: 260px;
+    box-shadow: #ccc 2px 2px 12px 1px;
+    border-radius: 5px;
+    /*overflow:hidden;*/
+}
+.prod-images-cont {
+    height: 180px;
+    box-shadow: #ccc 2px 2px 12px 1px;
+    border-radius: 5px;
+    position:relative;
+}
+.form-control{
+    height:45px;
+}
+
+.prod-img-cont {
+    height: 180px;
+    overflow: hidden;
+}
+.prod-img-cont:hover {
+    background-color: #f3f3f3;
+}
+.prod-img-cont img{
+    height:100%;
+}
+.prod-title{
+    font-size:1.1rem;
+    font-weight:500;
+    text-decoration:none;
+}
+.prod-details img{
+    max-width:600px;
+    margin-right:auto;
+    margin-left:auto;
+    width:100%;
+}
+.prod-details{
+    font-size:1.2rem;
+}
+
+
+.text-right {
+    text-align: right !important;
+}
+.text-left{
+    text-align:left !important;
+}
+.back-link {
+    color:#C09300;
+}
+select,input,textarea{
+    margin-top:10px;
+}
+.page-item:first-child .page-link {
+    border-radius:0px !important;
+    border-top-right-radius:5px !important;
+    border-bottom-right-radius:5px !important;
+}
+.page-item:last-child .page-link{
+    border-radius:0px !important;
+    border-top-left-radius:5px !important;
+    border-bottom-left-radius:5px !important;
+}
+.project-img{
+    max-width:100%;
+}
+.hint{
+    font-size:12px;
+    color:red;
+}
+
+h5.sep-header{
+    /*background-color:#ccc;*/
+    color:black;
+    padding:7px;
+    text-align:right;
+    border-bottom:solid 3px #ff0000;
+    font-size:17px;
+    margin-bottom:20px;
+}
+.label{
+    font-size:12px;
+}
+.form-control {
+    font-size: 0.8rem;
+}
+.prof-image {
+    margin-right:auto;margin-left:auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: solid 1px #ccc;
+    box-shadow: rgb(204, 204, 204) 0px 0px 15px;
+}
+.bg-danger{
+    color:white;
+}
+.prof-details{
+    font-size:0.8rem;
+}
+.sep-line {
+    border-bottom: solid 3px #a98204;
+    margin-bottom:30px;
+}
+a .fas{
+    color:#ff0000;
+}
+h3 {
+    font-size: 1.4rem;
+    color: #a98204;
+}

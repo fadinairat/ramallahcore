@@ -1,0 +1,204 @@
+﻿@model IEnumerable<Ramallah.Models.Comments>
+
+@{
+    ViewData["Title"] = "Index";
+     var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1 class="m-0">@Localizer["Complaints"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Complaints"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-6 text-start" ><h1 class="form-title">@Localizer["List All Complaints"]</h1></div>    
+</div>
+<form asp-action="Index" >
+<div class="row mb-3">
+    <div class="col-6 col-md-3">
+        <label for="keyword" >@Localizer["Keyword"]:</label>
+        <input type="text" placeholder="@Localizer["Keyword"]" class="form-control" name="keyword" id="keyword" value="@ViewBag.keyword" />
+    </div>
+    
+    <div class="col-6 col-md-2"><br /><button type="submit" asp-action="Index" class="btn btn-primary mt-2" >@Localizer["Search"]</button></div>
+</div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+          
+           @* <th>
+                @Html.DisplayNameFor(model => model.Published)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviewed)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.AddTime)
+            </th>
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+           
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reviewed)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.AddTime)
+            </td>
+           
+            <td>
+                <span class="btn btn-info btn-sm comment-details" data-name="@item.Name" data-subject="@item.Subject" data-id="@item.Id"><i class="fas fa-folder"></i> </span> 
+                <a asp-route-id="@item.Id" class="btn btn-danger btn-sm" asp-action="Delete"><i class="fas fa-trash"></i> </a> 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if(ViewBag.CommentsCount != null && ViewBag.CommentsCount > 0){
+<div class="text-center">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="1">@Localizer["First"]</a></li>
+            @for(int i=1; i<=ViewBag.CommentsCount; i++)
+            {
+                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="@i">@i</a></li>     
+            }    
+        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="@ViewBag.CommentsCount">@Localizer["Last"]</a></li>
+      </ul>
+    </nav>
+</div>
+ }
+</div>
+</Section>
+
+<div class="modal fade" id="detailsModal">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Large Modal</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="@Localizer["Close"]">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        
+    </div>
+    <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["Close"]</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+    </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+@section Scripts {
+    <script type="text/javascript" >
+    $(document).ready(function(){
+        $(document).on("click", ".comment-details", function() {
+            var id = $(this).data("id");
+            var name = $(this).data("name");
+            var subject = $(this).data("subject");
+            
+            $("#detailsModal").modal("show");
+            var url = "@Url.Action("getCommentDetails", "Comments")?id="+id;        
+            
+            $.ajax({
+                url: url,      
+                dataType: "json",
+                beforeSend: function() {
+                    $("#detailsModal .modal-title").html("@Localizer["Subject"]: "+subject + " (" + name +")");
+                    $("#detailsModal .modal-body").html('<div class="text-center" id="loader" ><i class="fa fa-spinner fa-spin fa-3x fa-fw k_loader" id="m_loader"></i></div>');
+                },    
+                success: function (data) {         
+                    if (data.success) {
+                        var content = "<div class='row' >";
+                        content += "<div class='col-6 mt-3 text-left' ><b>@Localizer["Name"]:</b> " + data.details.name + "</div>";
+                        content += "<div class='col-6 mt-3 text-left' ><b>@Localizer["Email"]:</b> " + data.details.email + "</div>";
+                        content += "<div class='col-6 mt-3 text-left' ><b>@Localizer["Location"]:</b> " + data.details.location + "</div>";
+                        content += "<div class='col-6 mt-3 text-left' ><b>@Localizer["Subject"]:</b> " + data.details.subject + "</div>";
+                        content += "<div class='col-12 mt-3 text-left' ><b>@Localizer["Comment"]:</b><br> " + data.details.body + "</div>";
+                        content += "</div>";
+                        $("#detailsModal .modal-body").html(content);
+                    }
+                    else{
+                        $("#detailsModal .modal-body").html("<div class='row' ><div class='col-12 text-center alert alert-danger' >Comment details not found...</div></div>");
+                    }             
+                },
+                error: function (jqXhr, json, errorThrown) {
+                    try{
+                        var errors = jqXhr.responseJSON.errors;                       
+                        console.log(errors);
+                    }
+                    catch(eee){
+                        console.log(eee.message);
+                    }
+                },
+                complete: function () {                    
+                    $("#loader").remove();
+                    $("#detailsModal .modal-title").show();               
+                }
+            });
+        });
+    })  ;  
+    </script>
+}
+

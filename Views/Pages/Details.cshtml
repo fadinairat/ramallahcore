@@ -1,0 +1,290 @@
+﻿@model Ramallah.Models.Page
+@using Ramallah.Models
+@using System.Text.RegularExpressions
+@inject IConfiguration _config
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	ViewData["title"] = Model.Title;
+    string myKey = _config["GoogleReCaptcha:key"];
+}
+<style>
+    .youtube-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .youtube-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<section class="ls-section">
+<div class="container pt-3" style="padding-top:150px;min-height:400px;" >
+	@{
+		ViewData["Title"] = Model.Title;
+	}
+	<div class="row mt-2">
+		<div class="col-12 text-right" >@Html.Raw(ViewBag.Route)</div>
+	</div>
+	<div class="row">
+        @{
+            if(Model.ShowDate == true)
+		    {
+			    <div class="col-12 col-md-8"><h3 class="navh6">@Model.Title</h3></div>
+			    <div class="col-12 col-md-4 text-left"><span class="sdate">تاريخ النشر: @Model.PageDate.ToString("yyyy-MM-dd")</span></div>
+		    }	
+		    else{
+                <div class="col-12 col-md-12"><h3 class="navh6">@Model.Title</h3></div>
+            }
+            if (Model.SubTitle != "" && Model.SubTitle!=null)
+            {
+                <div class="col-12 col-md-12"><h5 class="navh6">@Model.SubTitle</h5></div>
+            }
+           
+        }
+	</div>
+
+	<!-- ############### Template of Page #################-->
+	<partial name="@ViewBag.Template" />
+    @{
+        if(Model.Form !=null){
+			<form method="post" asp-action="SaveJobApp" enctype="multipart/form-data" >    
+            <input type="hidden" name="FormId" value="@Model.FormId" />
+            <input type="hidden" name="PageId" value="@Model.PageId" />
+            @{
+                       
+                if(ViewBag.FormFields != null)
+                {
+                    Forms JobForm = ViewBag.AppForm;
+                    foreach (FormsFields field in ViewBag.FormFields)
+                    {
+                        <div class="row mb-3">
+                            <div class="col-12">
+                                @{
+                                    if (field.Type == "text" || field.Type == "number")
+                                    {
+                                        string extraParams = "";
+                                        string subType = field.SubType;
+                                        string style = "";
+                                        if (field.Type == "number")
+                                        {
+                                            subType = "number";
+                                            style = "max-width:200px;";
+                                            if (field.MinAnsNumber != null) extraParams += " min=" + field.MinAnsNumber;
+                                            if (field.MaxAnsNumber != null) extraParams += " max=" + field.MaxAnsNumber;
+                                            if (field.Step != null) extraParams += " step=" + field.Step;
+                                        }
+                                        else if (field.Type == "text")
+                                        {
+                                            extraParams = " maxlength=" + field.MaxLength + "";
+                                        }
+
+                                        <b>@Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) @(field.Required ? Html.Raw("<span class='requiredStar' >*</span>") : "") </b>
+
+                                        <br>
+                                        <input type="@subType" class="form-control @(field.Class)" placeholder="@field.ArPlaceHolder" name="@field.Title" @(field.Required == true ? "required=required" : "") value="@(!String.IsNullOrEmpty(field.DefaultValue) ? field.DefaultValue: "")" style="@style" @extraParams />
+                                    }
+                                    else if (field.Type == "textarea")
+                                    {
+                                        <b>@Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) @(field.Required ? Html.Raw("<span class='requiredStar' >*</span>") : "") </b>
+                                        <br>
+                                        <textarea class="form-control @(field.Class)" placeholder="@field.ArPlaceHolder" name="@field.Title" @(field.Required == true ? "required=required" : "") value="@(!String.IsNullOrEmpty(field.DefaultValue) ? field.DefaultValue: "")" rows="@field.Rows" maxlength="@field.MaxLength"></textarea>
+                                    }
+                                    else if (field.Type == "header")
+                                    {
+                                        string html_field = "<" + field.SubType + ">" + Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) + "</" + field.SubType + ">";
+                                        <span>@Html.Raw(html_field)</span>
+                                    }
+                                    else if (field.Type == "paragraph")
+                                    {
+                                        string html_field = "<" + field.SubType + ">" + Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) + "</" + field.SubType + ">";
+                                        <span>@Html.Raw(html_field)</span>
+                                    }
+                                    else if (field.Type == "file")
+                                    {
+                                        <b>@Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) @(field.Required ? Html.Raw("<span class='requiredStar' >*</span>") : "") </b>
+
+                                        <br>
+                                        <input type="file" name="@field.ArTitle" accept="@(!String.IsNullOrEmpty(field.Description) ? "": ".jpg,.png,.doc.docx,.xlsx,.pdf")" placeholder="@field.ArPlaceHolder" class="@field.Class" @(field.Required==true ? "required=required":"")>
+                                    }
+                                    else if (field.Type == "select")
+                                    {
+                                        <b>@Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) @(field.Required ? Html.Raw("<span class='requiredStar' >*</span>") : "") </b>
+
+                                        <br />
+                                        <select name="@field.ArTitle" id="@field.ArTitle" class="form-control @field.Class" @(field.Required==true ? "required=required":"")>
+                                            <option value="">@field.Description</option>
+                                            @{
+                                                if (field.Options != null && field.Options.Count() > 0)
+                                                {
+                                                    foreach (FormsFieldsOptions opt in field.Options)
+                                                    {
+                                                        <option value="@opt.Value">@Html.Raw(Regex.Replace(opt.ArLabel, "<.*?>", ""))</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else if (field.Type == "radio-group")
+                                    {
+                                        <span><b>@Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) @(field.Required ? Html.Raw("<span class='requiredStar' >*</span>") : "") </b></span>
+
+                                        <br />
+                                        if (field.Options != null && field.Options.Count() > 0)
+                                        {
+                                            foreach (FormsFieldsOptions opt in field.Options)
+                                            {
+                                                string br = "";
+                                                string radCont = "";
+                                                string radContCl = "";
+                                                if (field.Inline)
+                                                {
+                                                    radCont = "<div class='radCont-inline' >";
+                                                    radContCl = "</div>";
+                                                }
+                                                else br = "<br>";
+
+                                                @Html.Raw(radCont)
+                                                <label for="@field.ArTitle" class="dForm-label">@Html.Raw(Regex.Replace(opt.ArLabel, "<.*?>", ""))</label> <input type="radio" class="dForm-radio" name="@field.ArTitle" value="@opt.Value" @(field.Required==true ? "required=required":"")>
+                                                @Html.Raw(radContCl)
+                                                @Html.Raw(br)
+                                            }
+                                        }
+                                    }
+                                    else if (field.Type == "checkbox-group")
+                                    {
+                                        <span><b>@Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) @(field.Required ? Html.Raw("<span class='requiredStar' >*</span>") : "") </b></span>
+                                        <br />
+                                        if (field.Options != null && field.Options.Count() > 0)
+                                        {
+                                            foreach (FormsFieldsOptions opt in field.Options)
+                                            {
+                                                string br = "";
+                                                string radCont = "";
+                                                string radContCl = "";
+                                                if (field.Inline)
+                                                {
+                                                    radCont = "<div class='radCont-inline' style='margin-right:20px;' >";
+                                                    radContCl = "</div>";
+                                                }
+                                                else br = "<br>";
+
+                                                @Html.Raw(radCont)
+                                                <input type="checkbox" class="dForm-chk" style="margin-left:10px;" name="opt-@opt.Id" id="opt-@opt.Id"> <label for="@field.ArTitle" class="dForm-label">@Html.Raw(Regex.Replace(opt.ArLabel, "<.*?>", ""))</label>
+                                                @Html.Raw(radContCl)
+                                                @Html.Raw(br)
+                                            }
+                                            if (field.EnableOther)
+                                            {
+                                                <br />
+
+                                                <input type="checkbox" class="dForm-chk other-chk" data-id="opt-otherTxt-@field.Id" name="opt-other-@field.Id" style="display:inline-block;"> <label for="@field.ArTitle" class="dForm-label">أخرى</label>  <input type="text" name="opt-otherTxt-@field.Id" id="opt-otherTxt-@field.Id" class="form-control" disabled="disabled" style="width:200px;" maxlength="50">
+                                            }
+                                        }
+                                    }
+                                    else if (field.Type == "date")
+                                    {
+                                        <b>@Html.Raw(Regex.Replace(field.ArLabel, "<.*?>", "")) @(field.Required ? Html.Raw("<span class='requiredStar' >*</span>") : "") </b>
+                                        <br>
+                                        <input type="date" class="form-control @(field.Class)" placeholder="@field.ArPlaceHolder" style="max-width:200px;" name="@field.Title" @(field.Required == true ? "required=required" : "") value="@(!String.IsNullOrEmpty(field.DefaultValue) ? field.DefaultValue: "")" />
+                                    }
+                                    else if (field.Type == "autocomplete")
+                                    {
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                    }
+                    <div class="row mb-4">
+				        <div class="col-md-12">
+					        <div class="g-recaptcha" lang="ar" data-sitekey="@myKey"></div>
+					        <span class="text-danger field-validation-valid" data-valmsg-for="g-recaptcha-response" data-valmsg-replace="true"></span>
+				        </div>
+			        </div>
+                    <div class="row" ><div class="col-12 text-center" >
+                        <button type="submit" class="btn subscribe_btn" >@Model.Form.ArSubmitLabel</button>
+                    </div></div>
+                }
+        }
+        </form>
+
+        }
+    }
+	
+	@if (ViewBag.PageTags != null && ViewBag.PageTags.Count > 0)
+	{
+		<div class="row page_content mt-3">
+			<span class="text-primary fw-bold fs-5" >الاشارات</span>
+			<div class="tags_cont">
+				<ul>
+					@if (ViewBag.PageTags != null)
+					{
+						foreach (TagRel item in ViewBag.PageTags)
+						{
+							<li><a asp-action="Tag" asp-controller="Home" asp-area="" asp-route-id="@item.Tag.Id" asp-route-title="@item.Tag.ArName" ><span >@item.Tag.ArName</span></a></li>
+						}
+					}
+				</ul>
+			</div>
+		</div>
+	}
+</div>
+</section>
+@section Scripts{
+	{
+		<partial name="_validationMsg" />
+		<partial name="_ValidationScriptsPartial" >
+	}
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script>
+	window.onload = function() {
+		var $recaptcha = document.querySelector('#g-recaptcha-response');
+		if ($recaptcha) {
+			$recaptcha.setAttribute("required", "required");
+		};
+
+		$(document).ready(function() {
+            $(document).on("change", ".other-chk", function () {
+                var otherId = $(this).data("id");
+                if (otherId != "") {
+                    if ($(this).is(":checked")) {
+                        $("#" + otherId).removeAttr("disabled");
+                    }
+                    else {
+                        $("#" + otherId).attr("disabled", "disabled");
+                    }
+                }
+            });
+
+			$(document).on('submit', '#contForm', function(e) {
+				if (grecaptcha.getResponse() == "") {
+					e.preventDefault();
+					alert("يجب عليك التأكيد عن انك لست روبوت!");
+				} else {
+
+				}
+			});
+		});
+	}
+    </script>
+
+    <style>
+        #g-recaptcha-response {
+            display: block !important;
+            position: absolute;
+            margin: -78px 0 0 0 !important;
+            width: 302px !important;
+            height: 76px !important;
+            z-index: -999999;
+            opacity: 0;
+        }
+    </style>
+}

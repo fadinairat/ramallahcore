@@ -1,0 +1,269 @@
+﻿@using Ramallah.Models
+@inject IConfiguration _config
+@{
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    string myKey = _config["GoogleReCaptcha:key"];
+}
+@{
+    ViewData["Title"] = ViewBag.Title;
+}
+
+	
+<main id="main" class="main-home">
+	<div class="wenramallah" style="position: fixed;top: 42%;left: 0;z-index: 9999999;display:none;"><a href="https://ramallah.ps/ar_page.aspx?id=KLHRVGa6396731913aKLHRVG"><img width="100" src="@Url.Content("files/image/2021/aug/icon_wr12.jpg")"/></a></div>
+	<div class="weramallah"><a asp-action="Index" asp-controller="Home"><img width="100" src="~/web-front/images/wain_newlogo.png"/></a></div>
+	<!-- <a class="maria-relief" href="https://www.fema.gov/hurricane-maria">
+		<span class="maria-relief-close">x</span>
+	</a> -->
+	<section id="mainPage">
+	<!-- Search Section
+		//////////////////////////// -->
+		
+<div id="search-banner" class="fade">
+<div class="slider">
+	@if(ViewBag.Slider !=null){
+		List<Files> slider = ViewBag.Slider;
+		foreach(Files item in slider){
+			<div ><img width='100%' src='@Url.Content(item.FilePath)'></div>
+		}	
+	}
+	
+	@*
+	<div ><img width='100%' src='@Url.Content("web-front/images/side_view.jpg")'></div>
+	<div ><img width='100%' src='files/server/slider/side_view.jpg'></div>
+	<div ><img width='100%' src='files/image/slider/rashid.jpg'></div>
+	<div ><img width='100%' src='files/server/slider/top_view.jpg'></div>
+	<div ><img width='100%' src='files/server/slider/night_waterfall.jpg'></div>
+	*@
+</div>
+<div action="" class="formScript">
+<form method="get" action="@Url.Action("Search","Home",new{})" id="form1" style="margin-bottom:0 ">
+	<p>
+		<input name="keyword" type="text" id="keyword" data-keywords="" autocomplete="off" placeholder="ابحث هنا" />
+	
+		<button type="submit">
+			<img src="~/web-front/images/arrow-go.png" height="32px" />
+		</button>
+	</p>
+</form>
+			</div>
+
+			<a href="#locals" id="goToCity"></a>
+
+		</div><!-- /#search-banner -->
+		<div class="content-container" style="height: 90px;bottom:0 !important;padding:0;z-index:9999">
+			<div class="grid_6 grid_12 " style="background:#373435;">
+				<div style="max-width: 650px;margin-right: auto;position:relative;display:none">
+					<img src="~/web-front/images/issa.jpg" />
+					<a href="@Url.Action("Details", "Pages", new {id= 1090, title="من رحاب رام الله" })" class="welcome">من رحاب رام الله ... اهلا بكم</a>
+				</div>
+			</div>
+			<div class="grid_6 grid_12 contactusArea"  style="background:#c0932e">
+				<div style="max-width: 650px;margin-right: auto;position:relative;top:25px;">
+					<div class="contactus" ><h3>تواصل معنا</h3></div> 
+					<div class="input-group subscarea" style="float:right;width:62%;margin-right:2em;">
+						<form action="https://ramallah.us5.list-manage.com/subscribe/post?u=8be694a679c1b7589d6ae68c5&amp;id=1572f85ce5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+							<input type='hidden' name='csrfToken' value='46eb82dd-f043-4cbe-910e-1dc2bac59c30'>
+							<div class="input-group-prepend" style="float:left">
+								<button type="submit" style="padding: 8px;background: #373435;color: #fff;" class="input-group-text" id="inputGroup-sizing-sm">اشتراك</button>
+							</div>
+							<input style="border:none;width: 80%;padding:5px 15px" type="email" required placeholder="بريدك الالكتروني" class="form-control required email" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="EMAIL" id="mce-EMAIL">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!-- /.content-container -->
+	</section><!-- /#search-banner -->
+
+
+	<!-- Services Section 	//////////////////////////// -->
+	<section id="locals">
+		<div class="feature mIndex" data-format="background" data-locate="device" data-type="99" data-limit="1" style="background-image:url('@Url.Content("web-front/images/services.jpg")');" >					
+			<svg x="0px" y="0px" viewBox="0 0 100 96" preserveAspectRatio="none">
+				<polygon class="angle" points="0,96 34.9,0 100,0 100,96 "/>
+			</svg>		
+			<div class="feature-content">
+				<a href="@Url.Action("Details","Categories",new{id=1069,title="خدمات البلدية"})" class="call-to-action">
+					<p class="call-out">خدمات البلدية</p>
+				</a>
+			</div>
+		</div><!-- /.feature -->
+		
+		<div class="content-container services_div" >
+			<div class="grid_3 grid_12 services_div1">
+				<Div class="services_thumb"><a href="@Url.Action("Details","Categories",new{id=1102,title="الخدمات الالكترونية"})"><img src="~/web-front/images/1212.png" class="img-fluid" /></a></div>
+				<Div class="services_title"><a href="@Url.Action("Details","Categories",new{id=1102,title="الخدمات الالكترونية"})">الخدمات الالكترونية</a></div>
+			</div>
+			<div class="grid_3 grid_12 services_div1">
+				<Div class="services_thumb"><a href="https://www.ramallah-gis.ps/"><img src="~/web-front/images/gisserv.png" class="img-fluid" /></a></div>
+				<Div class="services_title"><a href="https://www.ramallah-gis.ps/">نظم المعلومات الجغرافية </a></div>
+			</div>
+			<div class="grid_3 grid_12 services_div1">
+				<Div class="services_thumb"><a href="@Url.Action("Details","Pages",new{id=250,title="خدمات الجمهور"})"><img src="~/web-front/images/customer_care.png" class="img-fluid" /></a></div>
+				<Div class="services_title"><a href="@Url.Action("Details","Pages",new{id=250,title="خدمات الجمهور"})">خدمات الجمهور</a></div>
+			</div>
+			<div class="grid_3 grid_12 services_div1">
+				<Div class="services_thumb"><a href="@Url.Action("Details","Pages",new{id=3375,title="الشكاوى والاقتراحات"})"><img src="~/web-front/images/compl.png" class="img-fluid" /></a></div>
+				<Div class="services_title"><a href="@Url.Action("Details","Pages",new{id=3375,title="الشكاوى والاقتراحات"})">الشكاوي والإقتراحات</a></div>
+			</div>
+		</div><!-- /.content-container -->
+	</section>
+	<!-- END Services Section 	//////////////////////////// -->
+	<section id="ads">
+		<div class="feature mIndex" data-format="background" data-locate="device" data-type="99" data-limit="1" style="background-image:url('@Url.Content("web-front/images/secadsbg.jpg")');" >					
+			<svg x="0px" y="0px" viewBox="0 0 100 96" preserveAspectRatio="none">
+				<polygon class="angle" points="0,96 34.9,0 100,0 100,96 "/>
+			</svg>		
+			<div class="feature-content">
+				<a href="@Url.Action("Details", "Categories", new {id= 1090, title="عطاءات" })" class="call-to-action">
+					<p class="call-out">العطاءات والاعلانات والوظائف الشاغرة</p>
+				</a>
+			</div>
+		</div><!-- /.feature -->
+		
+		<div class="content-container projects_div" >			
+			<article class="content-item projects_div1">
+				<Div class="project_thumb"><a href="@Url.Action("Details", "Categories", new {id= 1090, title="عطاءات" })"><img src="~/web-front/images/bids.png" class="img-fluid" /></a></div>
+				<Div class="project_title"><a href="@Url.Action("Details", "Categories", new {id= 1090, title="عطاءات" })">عطاءات</a></div>
+			</article>
+			
+			<article class="content-item projects_div1">
+				<Div class="project_thumb"><a href="@Url.Action("Details", "Categories", new {id= 30, title="إعلانات" })"><img src="~/web-front/images/ads.png" class="img-fluid" /></a></div>
+				<Div class="project_title"><a href="@Url.Action("Details", "Categories", new {id= 30, title="إعلانات" })">إعلانات</a></div>
+			</article>
+			<article class="content-item projects_div1">
+				<Div class="project_thumb"><a href="@Url.Action("Details", "Categories", new {id= 65, title="وظائف شاغرة" })"><img src="~/web-front/images/jobs.png" class="img-fluid" /></a></div>
+				<Div class="project_title"><a href="@Url.Action("Details", "Categories", new {id= 65, title="وظائف شاغرة" })">وظائف شاغرة</a></div>
+			</article>
+			
+		</div><!-- /.content-container -->
+	</section>
+	<!-- News Section 	//////////////////////////// -->
+	
+	<section id="news">
+		<div class="feature mIndex" data-format="background" data-locate="device" data-type="99" data-limit="1" style="background-image:url('@(ViewBag.MediaImg !=null ? ViewBag.MediaImg : "")');" >					
+			<svg x="0px" y="0px" viewBox="0 0 100 96" preserveAspectRatio="none">
+				<polygon class="angle" points="0,96 34.9,0 100,0 100,96 "/>
+			</svg>		
+			<div class="feature-content">
+				<a href="@Url.Action("Details","Pages",new{id=3213,title="البوابة الاعلامية"})" class="call-to-action">
+					<p class="call-out">البوابة الاعلامية</p>
+				</a>
+			</div>
+		</div><!-- /.feature -->
+		
+		
+		<div class="content-container news_div" >			
+			<article class="content-item news_div1">
+				<Div class="news_thumb">
+					<a href="@Url.Action("Gallery","Categories")"><img width="100%" src="@(ViewBag.lastGal!=null ? ViewBag.lastGal : "")" class="img-fluid" /></a>
+					<div class="newsicon"><a href="@Url.Action("Gallery","Categories")"><img src="~/web-front/images/photo-camera.svg" /></a></div>
+				</div>
+				<Div class="news_title"><a href="@Url.Action("Gallery","Categories")">مكتبة الصور</a></div>
+			</article>
+
+			<article class='content-item news_div1'>
+				<Div class='news_thumb'><a href='@Url.Action("Details","Categories",new {id=1097, title="مكتبة الفيديو"})'><img src='@(ViewBag.lastVid !=null ? ViewBag.lastVid.Thumb : "")' class='img-fluid' /></a><div class='newsicon'><img src='@Url.Content("web-front/images/video-camera.svg")' /></div></div><Div class='news_title'><a href='@Url.Action("Details","Categories",new {id=1097, title="مكتبة الفيديو"})'>مكتبة الفيديو</a></div>
+			</article>
+
+			<article class="content-item news_div1">
+				<Div class="news_thumb">
+					<a href="@Url.Action("Details","Categories",new{id=19,title="الأخبار"})"><img width="100%" src="@Url.Content("files/image/2023/India.jpg")" class="img-fluid" /></a>
+				</div>
+				<Div class="news_title"><a href="@Url.Action("Details","Categories",new {id=19, title="الاخبار"})">الاخبار</a> <a class="" style="float:left" href="@Url.Action("Details","Categories",new {id=49, title="قرارات المجلس البلدي"})">قرارات المجلس البلدي</a></div>				
+			</article>
+			
+			<article class="content-item news_div1">
+				<Div class="news_thumb">
+					<a href="https://www.ramallah.ps/calendar/index.aspx" target="_blank"><img height="100%" src="~/web-front/images/cal.jpg" class="img-fluid" /></a>
+				</div>
+				<Div class="news_title"><a href="https://www.ramallah.ps/calendar/index.aspx" target="_blank">الفعاليات</a></div>
+			</article>
+		</div><!-- /.content-container -->
+	</section>
+	<!-- END NEWS Section 	//////////////////////////// -->
+	
+	<!-- PROJECTS Section 	//////////////////////////// -->
+	<section id="projects">
+		<div class="feature mIndex" data-format="background" data-locate="device" data-type="99" data-limit="1" style="background-image:url('@(ViewBag.PrImg !=null ? ViewBag.PrImg : "")');" >					
+			<svg x="0px" y="0px" viewBox="0 0 100 96" preserveAspectRatio="none">
+				<polygon class="angle" points="0,96 34.9,0 100,0 100,96 "/>
+			</svg>		
+			<div class="feature-content">
+				<a href="@Url.Action("Details","Categories",new {id=1079, title="المشاريع"})" class="call-to-action">
+					<p class="call-out">مشاريع البلدية</p>
+				</a>
+			</div>
+		</div><!-- /.feature -->
+		
+		<div class="content-container projects_div" >
+			@{
+				if(ViewBag.Projects !=null){
+					List<PageCategory> projects = ViewBag.Projects;
+					foreach(PageCategory item in projects){
+						<article class='content-item projects_div1'><Div class='project_thumb'><a href='@Url.Action("Details","Pages",new{id=item.PageId,title=item.Page.Title})'><img src='@(item.Page.Thumb!=null && item.Page.Thumb!="" ? Url.Content(item.Page.Thumb) : "")' class='img-fluid' /></a></div><Div class='project_title'><a href='@Url.Action("Details","Pages",new{id=item.PageId,title=item.Page.Title})'>@item.Page.Title</a></div></article>
+					}
+				}
+			}			
+			@* <article class='content-item projects_div1'><Div class='project_thumb'><a href='ar_page.aspx?id=LmkX4ja3021815775aLmkX4j'><img src='@Url.Content("files/image/projects/school_heat.jpg")' class='img-fluid' /></a></div><Div class='project_title'><a href='ar_page.aspx?id=LmkX4ja3021815775aLmkX4j'>مشروع تدفئة المدارس الحكومية</a></div></article><article class='content-item projects_div1'><Div class='project_thumb'><a href='ar_page.aspx?id=LmkX4ja3023719281aLmkX4j'><img src='@Url.Content("files/image/projects/lab_project.jpg")' class='img-fluid' /></a></div><Div class='project_title'><a href='ar_page.aspx?id=LmkX4ja3023719281aLmkX4j'>مشروع أستوديو العلوم</a></div></article><article class='content-item projects_div1'><Div class='project_thumb'><a href='ar_page.aspx?id=LmkX4ja3020864022aLmkX4j'><img src='@Url.Content("files/image/projects/oldcity_save.jpg")' class='img-fluid' /></a></div><Div class='project_title'><a href='ar_page.aspx?id=LmkX4ja3020864022aLmkX4j'>مشروع إحياء البلدة القديمة وحماية المباني المنفردة</a></div></article> *@
+		</div><!-- /.content-container -->
+	</section>
+	<!-- END PROJECTS Section 	//////////////////////////// -->
+	
+	
+	
+	
+	
+	<!-- PROJECTS Section 	//////////////////////////// -->
+	<section id="facilities">
+		<div class="feature mIndex" data-format="background" data-locate="device" data-type="99" data-limit="1" style="background-image:url('@(ViewBag.FacImg !=null ? ViewBag.FacImg : "")');" >					
+			<svg x="0px" y="0px" viewBox="0 0 100 96" preserveAspectRatio="none">
+				<polygon class="angle" points="0,96 34.9,0 100,0 100,96 "/>
+			</svg>		
+			<div class="feature-content">
+				<a href="@Url.Action("Details","Categories",new{id=66,title="مرافق البلدية"})" class="call-to-action">
+					<p class="call-out">مرافق البلدية</p>
+				</a>
+			</div>
+		</div><!-- /.feature -->
+		
+		<div class="content-container projects_div" >	
+			@{
+				if(ViewBag.Facilities !=null){
+					List<Category> fac = ViewBag.Facilities;
+					foreach(Category item in fac){
+						<article class='content-item projects_div1'><Div class='project_thumb'><a href='@Url.Action("Details","Categories",new{id=item.Id,title=item.ArName})'><img src='@(item.Thumb!=null && item.Thumb!="" ? Url.Content(item.Thumb) : "")' class='img-fluid' /></a></div><Div class='project_title'><a href='@Url.Action("Details","Categories",new{id=item.Id,title=item.ArName})'>@item.ArName</a></div></article>
+					}
+				}
+			}	
+			@* <article class='content-item projects_div1'><Div class='project_thumb'><a href='ar_category.aspx?id=zLQ9Qra65670957azLQ9Qr'><img src='@Url.Content("files/image/facilities/%D8%A7%D9%84%D9%85%D8%B3%D8%B1%D8%AD%20%D8%A7%D9%84%D8%A8%D9%84%D8%AF%D9%8A%20s.jpg")' class='img-fluid' /></a></div><Div class='project_title'><a href='ar_category.aspx?id=zLQ9Qra65670957azLQ9Qr'>المرافق الثقافية والمجتمعية </a></div></article><article class='content-item projects_div1'><Div class='project_thumb'><a href='ar_category.aspx?id=zLQ9Qra1046928300azLQ9Qr'><img src='@Url.Content("files/image/facilities/%D9%85%D8%B4%D8%AA%D9%84%20%D8%A8%D9%84%D8%AF%D9%8A%20s.jpg")' class='img-fluid' /></a></div><Div class='project_title'><a href='ar_category.aspx?id=zLQ9Qra1046928300azLQ9Qr'>المرافق الخدماتية</a></div></article><article class='content-item projects_div1'><Div class='project_thumb'><a href='ar_category.aspx?id=zLQ9Qra67574463azLQ9Qr'><img src='@Url.Content("files/image/facilities/%D8%A7%D9%84%D8%A8%D8%B1%D9%88%D8%A9s.jpg")' class='img-fluid' /></a></div><Div class='project_title'><a href='ar_category.aspx?id=zLQ9Qra67574463azLQ9Qr'>الحدائق العامة</a></div></article><article class='content-item projects_div1'><Div class='project_thumb'><a href='ar_category.aspx?id=zLQ9Qra1045976547azLQ9Qr'><img src='@Url.Content("files/image/facilities/nelson%20man.jpg")' class='img-fluid' /></a></div><Div class='project_title'><a href='ar_category.aspx?id=zLQ9Qra1045976547azLQ9Qr'>الميادين العامة</a></div></article> *@
+		</div><!-- /.content-container -->
+	</section>
+	<!-- END PROJECTS Section 	//////////////////////////// -->
+	
+	
+	<!-- PROJECTS Section 	//////////////////////////// -->
+	
+	<!-- END PROJECTS Section 	//////////////////////////// -->
+	
+	
+	
+		
+
+</main><!-- /main -->
+<div id="overlay"></div>
+
+<ul class="section-nav">
+	<li><a href="#mainPage" class="mainPage active tooltip" title="الرئيسية"></a></li>
+	<li><a href="#locals" class="locals tooltip" title="خدمات البلدية">خدمات البلدية</a></li>
+	<li><a href="#ads" class="ads tooltip" title="العطاءات والاعلانات والوظائف الشاغرة">العطاءات والاعلانات والوظائف
+			الشاغرة</a></li>
+	<li><a href="#news" class="news tooltip" title="البوابة الاعلامية">البوابة الاعلامية</a></li>
+	<li><a href="#projects" class="projects tooltip" title="مشاريع البلدية">مشاريع البلدية</a></li>
+	<li><a href="#facilities" class="facilities tooltip" title="مرافق البلدية">مرافق البلدية</a></li>
+
+</ul>
+
+@section Scripts {
+
+}

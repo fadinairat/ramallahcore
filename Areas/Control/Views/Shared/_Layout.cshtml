@@ -1,0 +1,652 @@
+﻿@using Ramallah.Areas.Control.Controllers
+@using Microsoft.Extensions.Localization
+@using Ramallah.Helpers
+@inject IStringLocalizer<HomeController> Localizer
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<!DOCTYPE html>
+<html lang="@currentCulture">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@ViewData["Title"] - @Localizer["Site Title"]</title>
+<link rel="icon" type="image/png" href="~/web-front/images/logop.png" />
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/LTE-Admin/plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!--<link rel="stylesheet" href="~/LTE-Admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">-->
+<!-- iCheck -->
+<link rel="stylesheet" href="~/LTE-Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- JQVMap -->
+<link rel="stylesheet" href="~/LTE-Admin/plugins/jqvmap/jqvmap.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/LTE-Admin/dist/css/adminlte.min.css">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="~/LTE-Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+@*<link rel="stylesheet" href="~/LTE-Admin/../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">*@
+<!-- Daterange picker -->
+<link rel="stylesheet" href="~/LTE-Admin/plugins/daterangepicker/daterangepicker.css">
+<!-- summernote -->
+<link rel="stylesheet" href="~/LTE-Admin/plugins/summernote/summernote-bs4.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+@*<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>*@
+<link href="https://fonts.googleapis.com/css2?family=Cuprum:ital,wght@0,400;0,600;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/LTE-Admin/css/custom.css" />
+<link rel="stylesheet" href="~/LTE-Admin/dist/css/links_pop.css" />
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="//cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+<link rel="stylesheet" href="~/fastselect/dist/fastselect.css">
+<!-- jQuery -->
+<script src="~/LTE-Admin/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+@*<script src="~/LTE-Admin/plugins/jquery-ui/jquery-ui.min.js"></script>*@
+<script src="~/lib/ckeditor/ckeditor.js"></script>
+<script src="~/lib/ckfinder/ckfinder.js"></script>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="~/LTE-Admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a asp-action="Index" asp-controller="Home" asp-area="Control" class="nav-link">@Localizer["Home"]</a>
+      </li>
+      @*<li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>*@
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      @* <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li> *@
+
+      <!-- Messages Dropdown Menu -->
+     
+      
+    <li class="nav-item">
+        <a asp-action="Index" asp-controller="Home" asp-route-culture="@(currentCulture == "ar-AE" ? "en": "ar-AE")" class="nav-link" title="@(currentCulture == "ar-AE" ? Localizer["English"] : Localizer["Arabic"])">
+            <i class="fas fa-globe-africa"></i>
+        </a>
+    </li>
+          
+     
+
+      <li class="nav-item">
+          <a asp-action="Logout" asp-controller="Users" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i>
+          </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a asp-action="Index" asp-controller="Home" asp-area="" class="brand-link">
+        <img src="~/LTE-Admin/dist/img/intertech_logo.png" style="width:100%;" >
+        
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <!--<img src="~/LTE-Admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">-->
+          <i class="bi bi-person-circle" style="font-size:35px;color: #d1caca;vertical-align:middle;"></i>
+        </div>
+        <div class="info pt-3" >
+          <a href="~/Control/Users/Profile" class="d-block">@(currentCulture == "ar-AE" ? HttpContextAccessor.HttpContext.Session.GetString("ArName"): HttpContextAccessor.HttpContext.Session.GetString("Name"))</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a asp-action="Index" asp-controller="Home" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                @Localizer["Dashboard"]
+                <i class="@Localizer["Float"] fas fa-angle-@Localizer["Float Rev"]"></i>
+              </p>
+            </a>
+            
+          </li>
+            @{
+                if (@HttpContextAccessor.HttpContext.Session.GetString("type") != "Employer" && @HttpContextAccessor.HttpContext.Session.GetString("type")!="Donor" && @HttpContextAccessor.HttpContext.Session.GetString("type") != "Trainer")
+                {
+                    if (Functions.CheckAccess("Index", "Pages", "Control", HttpContextAccessor.HttpContext))
+                    {
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                            @Localizer["Pages"]
+                            <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @if (Functions.CheckAccess("Create", "Pages", "Control", HttpContextAccessor.HttpContext)){
+                            <li class="nav-item">
+                            <a asp-action="Create" asp-controller="Pages" class="nav-link">
+                                <i class="bi bi-plus-circle nav-icon"></i> 
+                                <p>@Localizer["Add New Page"]</p>
+                            </a>
+                            </li>
+                            }
+                            <li class="nav-item">
+                            <a asp-action="Index" asp-controller="Pages" class="nav-link">
+                                <i class="bi bi-list-ul nav-icon"></i> 
+                                <p>@Localizer["List All Pages"]</p>
+                            </a>
+                            </li>
+                        </ul>
+                                </li>
+                    }
+                    if (Functions.CheckAccess("Index", "Pages", "Control", HttpContextAccessor.HttpContext))
+                    {
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                @Localizer["Categories"]
+                                <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+                                @*<span class="badge badge-info right">6</span>*@
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @if (Functions.CheckAccess("Create", "Categories", "Control", HttpContextAccessor.HttpContext))
+                            {
+                                <li class="nav-item">
+                                    <a href="~/Control/Categories/Create" class="nav-link">
+                                        <i class="bi bi-plus-circle nav-icon"></i>
+                                        <p>@Localizer["Add New Category"]</p>
+                                    </a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                            <a href="~/Control/Categories/Index" class="nav-link">
+                                <i class="bi bi-list-ul nav-icon"></i>
+                                <p>@Localizer["List All Categories"]</p>
+                            </a>
+                            </li>
+
+                        </ul>
+                        </li>
+                    }
+                  
+            }          
+        }
+   
+        @if (Functions.CheckAccess("Index", "Forms", "Control", HttpContextAccessor.HttpContext)){
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fab fa-wpforms nav-icon"></i>
+                    <p>
+                        @Localizer["Forms"]
+                        <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    @{
+                        if (Functions.CheckAccess("Create", "Forms", "Control", HttpContextAccessor.HttpContext))
+                        {
+                            <li class="nav-item">
+                                <a href="~/Control/Forms/Create" class="nav-link">
+                                    <i class="bi bi-plus-circle nav-icon"></i>
+                                    <p>@Localizer["Add New Form"]</p>
+                                </a>
+                            </li>
+                        }
+                    }
+
+                    <li class="nav-item">
+                        <a asp- href="~/Control/Forms" class="nav-link">
+                            <i class="bi bi-list-ul nav-icon"></i>
+                            <p>@Localizer["List All Forms"]</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+         }
+          
+    @*@{*@
+    @*if (@HttpContextAccessor.HttpContext.Session.GetString("type") != "Employer" && @HttpContextAccessor.HttpContext.Session.GetString("type")!="Donor" && @HttpContextAccessor.HttpContext.Session.GetString("type") != "Trainer")*@
+                    
+    @if (Functions.CheckAccess("Index", "Menus", "Control", HttpContextAccessor.HttpContext)){
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="bi bi-menu-button-wide-fill nav-icon"></i>
+                <p>
+                    @Localizer["Menus"]
+                    <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                @if (Functions.CheckAccess("Create", "Jobs", "Control", HttpContextAccessor.HttpContext)){
+                <li class="nav-item">
+                    <a href="~/Control/Menus/Create" class="nav-link">
+                        <i class="bi bi-plus-circle nav-icon"></i>
+                        <p>@Localizer["Add New Menu"]</p>
+                    </a>
+                </li>
+                }
+                <li class="nav-item">
+                    <a asp- href="~/Control/Menus" class="nav-link">
+                        <i class="bi bi-list-ul nav-icon"></i>
+                        <p>@Localizer["List All Menus"]</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    }
+    @if (Functions.CheckAccess("Index", "Files", "Control", HttpContextAccessor.HttpContext))
+    {
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="bi bi-file-earmark-pdf-fill nav-icon"></i>
+                <p>
+                    @Localizer["Files"]
+                    <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                @if (Functions.CheckAccess("Create", "Files", "Control", HttpContextAccessor.HttpContext))
+                {
+                    <li class="nav-item">
+                        <a href="~/Control/Files/Create" class="nav-link">
+                            <i class="bi bi-plus-circle nav-icon"></i>
+                            <p>@Localizer["Add New File"]</p>
+                        </a>
+                    </li>
+                }
+                <li class="nav-item">
+                <a asp- href="~/Control/Files" class="nav-link">
+                    <i class="bi bi-list-ul nav-icon"></i>
+                    <p>@Localizer["List All Files"]</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    }
+    @if (Functions.CheckAccess("Index", "Tags", "Control", HttpContextAccessor.HttpContext))
+    {
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="bi bi-tags-fill nav-icon"></i>
+            <p>
+                @Localizer["Tags"]
+                <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            @if (Functions.CheckAccess("Create", "Tags", "Control", HttpContextAccessor.HttpContext))
+            {
+                <li class="nav-item">
+                    <a href="~/Control/Tags/Create" class="nav-link">
+                    <i class="bi bi-plus-circle nav-icon"></i>
+                    <p>@Localizer["Add New Tag"]</p>
+                </a>
+            </li>
+            }
+            <li class="nav-item">
+                <a asp- href="~/Control/Tags" class="nav-link">
+                    <i class="bi bi-list-ul nav-icon"></i>
+                    <p>@Localizer["List All Tags"]</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    }
+    @if (Functions.CheckAccess("Index", "Complaints", "Control", HttpContextAccessor.HttpContext))
+    {
+        <li class="nav-item">
+            <a href="~/Control/Comments" class="nav-link"><i class="far fa-comments nav-icon"></i> @Localizer["Complaints"]</a>
+    </li>
+    }
+                        @if (Functions.CheckAccess("Index", "HtmlTemplates", "Control", HttpContextAccessor.HttpContext))
+    {
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="bi bi-building nav-icon"></i>
+            <p>
+                @Localizer["Templates"]
+                <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            @if (Functions.CheckAccess("Create", "HtmlTemplates", "Control", HttpContextAccessor.HttpContext))
+            {
+            <li class="nav-item">
+                <a href="~/Control/HtmlTemplates/Create" class="nav-link">
+                    <i class="bi bi-plus-circle nav-icon"></i>
+                    <p>@Localizer["Add New Template"]</p>
+                </a>
+            </li>
+            }
+            <li class="nav-item">
+                <a href="~/Control/HtmlTemplates" class="nav-link">
+                    <i class="bi bi-list-ul nav-icon"></i>
+                    <p>@Localizer["List All Templates"]</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    }
+    @if (Functions.CheckAccess("Index", "Users", "Control", HttpContextAccessor.HttpContext))
+    {
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="bi bi-people-fill nav-icon"></i>
+            <p>
+                @Localizer["Users"]
+                <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            @if (Functions.CheckAccess("Create", "Users", "Control", HttpContextAccessor.HttpContext)){
+            <li class="nav-item">
+                <a href="~/Control/Users/Create" class="nav-link">
+                    <i class="bi bi-plus-circle nav-icon"></i>
+                    <p>@Localizer["Add New User"]</p>
+                </a>
+            </li>
+            }
+            <li class="nav-item">
+                <a asp- href="~/Control/Users" class="nav-link">
+                    <i class="bi bi-list-ul nav-icon"></i>
+                    <p>@Localizer["List All Users"]</p>
+                </a>
+            </li>
+        </ul>
+    </li>
+    }
+    @if (Functions.CheckAccess("Index", "Groups", "Control", HttpContextAccessor.HttpContext))
+    {
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="bi bi-collection-fill nav-icon"></i>
+            <p>
+                @Localizer["Groups"]
+                <i class="fas fa-angle-@Localizer["Float"] @Localizer["Float Rev"]"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+            @if (Functions.CheckAccess("Create", "Groups", "Control", HttpContextAccessor.HttpContext)){
+            <li class="nav-item">
+                <a href="~/Control/Groups/Create" class="nav-link">
+                    <i class="bi bi-plus-circle nav-icon"></i>
+                    <p>@Localizer["Add New Group"]</p>
+                </a>
+            </li>
+            }
+            <li class="nav-item">
+                <a href="~/Control/Groups" class="nav-link">
+                    <i class="bi bi-list-ul nav-icon"></i>
+                    <p>@Localizer["List All Groups"]</p>
+                </a>
+            </li>
+            @if (Functions.CheckAccess("Permissions", "Groups", "Control", HttpContextAccessor.HttpContext))
+            {
+                <li class="nav-item">
+                    <a href="~/Control/Groups/Permissions" class="nav-link">
+                    <i class="bi bi-diagram-3 nav-icon"></i>
+                    <p>@Localizer["Permissions"]</p>
+                </a>
+            </li>
+            }
+        </ul>
+    </li>
+    }
+          
+          <li class="nav-item" >
+              <a href="~/Control/Users/Profile" class="nav-link"><i class="bi bi-person-circle nav-icon"></i> @Localizer["My Profile"]</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <section class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    
+    @RenderBody()
+    
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <strong>Copyright &copy; @DateTime.Now.Year <a href="https://www.intertech.ps" target="_blank">Intertech Co.</a></strong>
+    @Localizer["All Rights Reserved"]
+    <div class="float-@Localizer["Float Rev"] d-none d-sm-inline-block">
+      <b>@Localizer["Version"]</b> 1.0.0
+    </div>
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+
+<!-- Modal -->
+<div id="linkmodal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title">@Localizer["Add Link"]</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>        
+      </div>
+      <div class="modal-body">
+            <div class="frmSearch">
+                <div class="row">
+                    <div class="col-xs-5 rd_box" >                        
+                        <section>
+                        <div>
+                          <input type="radio" id="link_type_rad1" name="link_type_rad" value="page" checked>
+                          <label for="link_type_rad1">
+                            <h2>@Localizer["Pages"]</h2>    
+                          </label>
+                        </div>
+                        <div>
+                          <input type="radio" id="link_type_rad2" name="link_type_rad" value="category">
+                          <label for="link_type_rad2">
+                            <h2>@Localizer["Categories"]</h2>    
+                          </label>
+                        </div>
+                        <div>
+                          <input type="radio" id="link_type_rad3" name="link_type_rad" value="file">
+                          <label for="link_type_rad3">
+                            <h2>@Localizer["Files"]</h2>  
+                          </label>
+                        </div>
+                        </section>
+                    </div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-5 rd_box text-right" >                        
+                        <section>
+                        <div>
+                          <input type="radio" id="lang_rad1" name="lang_rad" value="1" >
+                          <label for="lang_rad1">
+                            <h2>@Localizer["Shared"]</h2>    
+                          </label>
+                        </div>
+                        <div>
+                          <input type="radio" id="lang_rad2" name="lang_rad" value="2" checked>
+                          <label for="lang_rad2">
+                            <h2>@Localizer["Arabic"]</h2>    
+                          </label>
+                        </div>
+                        <div>
+                          <input type="radio" id="lang_rad3" name="lang_rad" value="3">
+                          <label for="lang_rad3">
+                            <h2>@Localizer["English"]</h2>  
+                          </label>
+                        </div>
+                        </section>
+                    </div>
+                </div>
+               
+                <input type="hidden" name="search_link" id="search_link" />
+                        <input type="text" id="search_text" name="search_text" class="form-control" placeholder="@Localizer["Type Keyword"]" />
+                <div id="suggesstion-box"></div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="get_link_btn" >@Localizer["Pages"]</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">@Localizer["Close"]</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  //$.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="~/LTE-Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="~/LTE-Admin/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="~/LTE-Admin/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+@*<script src="~/LTE-Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="~/LTE-Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>*@
+<!-- jQuery Knob Chart -->
+<script src="~/LTE-Admin/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="~/LTE-Admin/plugins/moment/moment.min.js"></script>
+<script src="~/LTE-Admin/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="~/LTE-Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="~/LTE-Admin/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="~/LTE-Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/LTE-Admin/dist/js/adminlte.js"></script>
+@{
+      if(currentCulture == "en"){
+          <script src="~/fastselect/dist/fastselect.standalone.js"></script>
+      }
+      else{
+          <script src="~/fastselect/dist/ar_fastselect.standalone.js"></script>
+      }
+  }
+<script src="~/LTE-Admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="~/LTE-Admin/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!--<script src="~/LTE-Admin/dist/js/pages/dashboard.js"></script>-->
+<script src="~/LTE-Admin/dist/js/links_pop.js"></script>
+@* <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> *@
+<script src="//cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js" ></script>
+<script src="//cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+@* <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js"></script> *@
+<script type="text/javascript" src="~/LTE-Admin/ui/jquery-ui.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/2c5w0wmw9nov8zgkagrjpr94l8e4ryuo598sm3y8shic3c8z/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    $(document).ready(function () {
+        $('.searchSelect').fastselect();
+    });
+    tinymce.init({
+        selector: '.tinymce',
+        setup: function (editor) {
+        // Set the directionality based on the direction of the replaced textarea
+        editor.on('init', function () {
+            var textareaDirection = editor.getElement().dir;
+            editor.getBody().dir = textareaDirection;
+            //editor.settings.directionality = textareaDirection;
+        });
+        },
+        height: 220, 
+        menubar: false,
+        plugins: ['advlist', 'lists'],
+        advlist_bullet_styles: 'square',  // only include square bullets in list
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | bullist numlist outdent indent | forecolor backcolor | link image media table mergetags | align lineheight | removeformat | cut copy paste | addcomment showcomments ',
+            //toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+          
+        mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+        ]
+    });
+
+    $(document).ready(function(){
+        $('.res-tbl').DataTable({
+            responsive: true,
+            paging:false,
+            ordering:false,
+            info:false,
+            searching: false
+        });
+    });
+</script>
+</body>
+</html>
+@await RenderSectionAsync("Scripts", required: false)

@@ -1,0 +1,379 @@
+﻿@model Ramallah.Models.Page
+@using Ramallah.Models
+@using Ramallah.Areas.Control.Controllers
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<link rel="stylesheet" href="~/LTE-Admin/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="~/LTE-Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1 class="m-0">@Localizer["Pages"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Pages"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-6 text-@Localizer["Float"]"><h1 class="form-title">@Localizer["Edit Page"]</h1></div>
+    <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="Index"><i class="bi bi-list-ul"></i> @Localizer["List All Pages"]</a></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" id="id" name="id" value="@Model.PageId" />
+            <input type="hidden" asp-for="PageId" />
+            <input type="hidden" asp-for="UserId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SubTitle" class="control-label"></label>
+                <input asp-for="SubTitle" class="form-control" />
+                <span asp-validation-for="SubTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="PageDate" class="control-label"></label>
+                    <input asp-for="PageDate" value="@DateTime.Now.Date.ToString("yyyy-MM-dd")" class="form-control" />
+                    <span asp-validation-for="PageDate" class="text-danger"></span>
+                </div>
+
+                 <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="ValidDate" class="control-label"></label>
+                    <input asp-for="ValidDate" class="form-control" />
+                    <span asp-validation-for="ValidDate" class="text-danger"></span>
+                </div>
+            
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="LangId" class="control-label"></label>
+                    <select asp-for="LangId" class ="form-control" asp-items="ViewBag.LangId"></select>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="TemplateId" class="control-label"></label>
+                    <select asp-for="TemplateId" class ="form-control">
+                        <option value="">:: @Localizer["Default"] ::</option>
+                         @{
+                            List<HtmlTemplate> templates = ViewBag.TemplateId;
+                            foreach (HtmlTemplate temp in templates)
+                            {                                 
+                                if(temp.Id == Model.TemplateId){
+                                    <option value="@temp.Id" selected>@(currentCulture == "en" ? temp.Name : temp.ArName)</option>
+                                }
+                                else{
+                                    <option value="@temp.Id">@(currentCulture == "en" ? temp.Name : temp.ArName)</option>
+                                }                                
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="Priority" class="control-label"></label>
+                    <input asp-for="Priority" class="form-control" value="999999"/>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6 col-sm-4 col-md-3">
+                    <label asp-for="Parent" class="control-label"></label>
+                    <select asp-for="Parent" class ="form-control">
+                        <option value="">:: @Localizer["Root"] ::</option>
+                        @{
+                            List<Page> parents = ViewBag.Parent;
+                            foreach (Page temp in parents)
+                            {               
+                                if(temp.PageId == Model.Parent){
+                                    <option value="@temp.PageId" selected>@temp.Title</option>
+                                }
+                                else
+                                {
+                                    <option value="@temp.PageId">@temp.Title</option>       
+                                }
+                            
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-6 col-sm-4">
+                <label class="control-label">@Localizer["Category"]</label>
+                <div class="select2-purple">
+                     <select name="cats_list" id="cats_list" class="select2 input-validation-error" multiple="multiple" data-placeholder="Select a Category" data-dropdown-css-class="select2-purple" style="width: 100%;" required data-val-required="@Localizer["Category Required"]">
+                    @{
+                        List<Category> cats = ViewBag.Cats;
+                        foreach (Category cat in cats)
+                        {
+                            Boolean isSelected = false;                                                    
+                            foreach (PageCategory p_cat in ViewBag.PageCats)
+                            {
+                                if(p_cat.PageId == Model.PageId && cat.Id == p_cat.CategoryId)
+                                {
+                                    isSelected = true;
+                                }
+                            }
+                                                    
+                            if(isSelected){
+                                <option value="@cat.Id" selected="selected" >@(currentCulture == "en" ? cat.Name : cat.ArName)</option>
+                            }
+                            else
+                            {
+                                            <option value="@cat.Id">@(currentCulture == "en" ? cat.Name : cat.ArName)</option>
+                            }
+                        }
+                    }
+                </select>
+                </div>
+                <span class="text-danger field-validation-error" data-valmsg-for="cats_list" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Body" class="control-label"></label>
+                <textarea asp-for="Body" class="form-control" ></textarea>
+                <span asp-validation-for="Body" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Summary" class="control-label"></label>
+                <textarea asp-for="Summary" class="form-control" rows=3></textarea>
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MetaDescription" class="control-label"></label>
+                <textarea asp-for="MetaDescription" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="MetaDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MetaKeywords" class="control-label"></label>
+                <textarea asp-for="MetaKeywords" class="form-control" rows="3" ></textarea>
+                <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+            </div>
+           
+            <div class="row">
+                 <div class="form-group col-12 col-sm-6">
+                    <label asp-for="Url" class="control-label"></label><br />
+                    <input type="url" asp-for="Url" class="form-control" style="width:95%;display:inline;" /> <a href="#" id="get_link" data-toggle="modal" data-target="#linkmodal" ><i class="fa fa-link" id="get_link_icon" data-text="Url" style="font-size:24px;" aria-hidden="true"></i></a>
+                    <span asp-validation-for="Url" class="text-danger"></span>
+                </div>
+                @*<div class="form-group col-12 col-sm-6">
+                    <label asp-for="RedirectUrl" class="control-label"></label>
+                    <input type="url" asp-for="RedirectUrl" class="form-control" />
+                    <span asp-validation-for="RedirectUrl" class="text-danger"></span>
+                </div>*@
+            </div>
+           
+            <div class="row">
+                 <div class="form-group col-12 col-md-6">
+                    <label asp-for="Thumb" class="control-label"></label>
+                    <input type="file" asp-for="Thumb" class="form-control" />
+                    <span asp-validation-for="Thumb" class="text-danger"></span>
+                    @if(Model.Thumb != null )
+                    {
+                        <img src="@Url.Content(Model.Thumb)" style="width:120px;" >
+                    }
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label asp-for="Thumb2" class="control-label"></label>
+                    <input type="file" asp-for="Thumb2" class="form-control" />
+                    <span asp-validation-for="Thumb2" class="text-danger"></span>
+                     @if(Model.Thumb2 != null)
+                     {
+                        <img src="@Url.Content(Model.Thumb2)" style="width:120px;" >
+                     }
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="form-group col-sm-6">
+                    <label asp-for="FormId" class="control-label"></label>
+                    <select asp-for="FormId" class="form-control">
+                        <option value="">:: @Localizer["No Application Form"] ::</option>
+                        @{
+                            foreach(Forms item in ViewBag.Forms)
+                            {
+                                <!option value="@item.Id" @(Model.Form != null && Model.FormId == item.Id ? "SELECTED" : "") >@(currentCulture == "en" ? item.Title : item.ArTitle)</!option>
+                            }
+                        }
+                    </select>
+                    <span asp-validation-for="FormId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="ShowThumb" class="control-label" style="width:60%;"></label>
+                    <input asp-for="ShowThumb" type="checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                </div>
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="Publish" class="control-label" style="width:60%;"></label>
+                    <input asp-for="Publish"  type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                </div>
+               
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="ShowAsMain" class="control-label" style="width:60%;"></label>
+                        <input asp-for="ShowAsMain"  type="checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    
+                </div>
+            
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="ShowInSearchPage" class="control-label" style="width:60%;"></label>
+                        <input asp-for="ShowInSearchPage"  type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                   
+                </div>
+                <div class="form-group form-check col-6 col-sm-4">
+                   <label asp-for="ShowInSiteMap" class="control-label" style="width:60%;"></label>
+                   <input asp-for="ShowInSiteMap" type="checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                   
+                </div>
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="ShowDate" class="control-label" style="width:60%;"></label>
+                    <input asp-for="ShowDate"  type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                   
+                </div>
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="AllowComment" class="control-label" style="width:60%;"></label>
+                    <input asp-for="AllowComment" type="checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                   
+                </div>
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="ShowAsRelated" class="control-label" style="width:60%;"></label>
+                    <input asp-for="ShowAsRelated"  type="checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    
+                </div>
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="ShowRelated" class="control-label" style="width:60%;"></label>
+                    <input asp-for="ShowRelated"  type="checkbox" data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                    
+                </div>
+                <div class="form-group form-check col-6 col-sm-4">
+                    <label asp-for="Sticky" class="control-label" style="width:60%;"></label>
+                    <input asp-for="Sticky"  type="checkbox"  data-bootstrap-switch data-off-color="danger" data-on-color="success" />
+                </div>
+            </div>
+             <div class="row">
+                <div class="form-group form-check col-12">
+                    <label class="control-label">@Localizer["Page Tags"]</label>
+                    <div class="select2-purple">
+                    <select name="tags_list" id="tags_list" class="select2" multiple="multiple" data-placeholder="Select a Tag" data-dropdown-css-class="select2-purple" style="width: 100%;">
+                        @{
+                            List<Tag> tags_list = ViewBag.Tags;
+                            foreach (Tag tag in tags_list)
+                            {
+                                Boolean isSelected = false;
+                                                    
+                                foreach (TagRel p_tag in ViewBag.PageTags)
+                                {
+                                    if(p_tag.PageId == Model.PageId && tag.Id == p_tag.TagId)
+                                    {
+                                        isSelected = true;
+                                    }
+                                }
+                                                    
+                                if(isSelected){
+                                    <option value="@tag.Id" selected="selected" >@(currentCulture == "en" ? tag.Name : tag.Name)</option>
+                                }
+                                else
+                                {
+                                    <option value="@tag.Id" >@(currentCulture == "en" ? tag.Name : tag.ArName)</option>
+                                }
+                            }
+                        }
+                    </select>
+                  </div>
+                </div>
+            </div>
+           
+            @*
+                <div class="form-group">
+                <label asp-for="Gallery" class="control-label"></label>
+                <input asp-for="Gallery" class="form-control" />
+                <span asp-validation-for="Gallery" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Video" class="control-label"></label>
+                <input asp-for="Video" class="form-control" />
+                <span asp-validation-for="Video" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Audio" class="control-label"></label>
+                <input asp-for="Audio" class="form-control" />
+                <span asp-validation-for="Audio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            </div>*@
+            <div class="form-group text-center">
+                <input type="submit" value="@Localizer["Save Changes"]" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-danger" asp-action="Index" >@Localizer["Cancel"]</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</section>
+
+@section Scripts{
+    {
+        <partial name="_ValidationScriptsPartial" >
+    }
+    <script src="~/LTE-Admin/plugins/select2/js/select2.full.min.js"></script>
+    <script type="text/javascript" >
+    $(function(){   
+        $('#tags_list').select2();
+        $("#cats_list").select2();
+
+        $("input[data-bootstrap-switch]").each(function(){
+          $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+    });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        $("#LangId").change(function() {
+            var lang = $(this).val();
+            if(lang == "1" || lang == "2"){
+                
+            }
+        });
+    });     
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('Body', {
+            language: '@(currentCulture == "en" ? "en" : "ar")',
+            uiColor: '#f8f9fa',
+            contentsLangDirection: '@(currentCulture=="en" ? "ltr" : "rtl")',
+            height: 300,
+            baseFloatZIndex: 10005
+        });
+        //bootstrap WYSIHTML5 - text editor
+        //$(".textarea").wysihtml5();
+    });
+    </script>
+}
+

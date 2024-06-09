@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Ramallah.Models.FormsFields>
+@using Ramallah.Models
+@inject IStringLocalizer<HomeController> Localizer
+@{
+    ViewData["Title"] = "Fields List";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+<link rel="stylesheet" type="text/css" media="screen" href="~/LTE-Admin/ui/jquery-ui.css">
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Fields List"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Fields List"]</a></li>
+                    <li class="breadcrumb-item active">@Localizer["Fields List"]</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+        <form id="fields_form" method="post" asp-route-id="@ViewBag.Form.Id" asp-action="Fields" >               
+            <div class="row">
+                <div class="col-xs-12"><h2><i class="fa fa-file-text add_icon" aria-hidden="true"></i>@Localizer["Add/Edit Field"] (@ViewBag.Form.Title - @ViewBag.Form.ArTitle)</h2></div>
+            </div>
+
+            <div class="fields_div">
+                <div id="build-wrap"></div>
+            </div>
+
+            <input type="hidden" name="all_fields" id="all_fields" value="" />
+
+            <div class="row">
+                <div class="col-xs-12 text-center"><button type="button" id="save_fields" class="btn btn-primary"><i class="fa fa-check-square-o" aria-hidden="true"></i> @Localizer["Save Changes"]</button></div>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts{
+    
+    <script src="~/LTE-Admin/form-builder/form-builder.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function ($) {
+            var fbEditor = document.getElementById('build-wrap');
+            const formData = JSON.stringify([
+                @(ViewBag.Fields != null ? Html.Raw(ViewBag.Fields): "")
+            ]);
+            //alert(formData);
+            var formBuilder = $("#build-wrap").formBuilder({ formData, disableFields: ['autocomplete', 'hidden'] });
+
+            $("#save_fields").click(function () {
+                //alert(formBuilder.actions.getData('json'));//Form Data
+                var all_fields_json = formBuilder.actions.getData('json');//Form Data
+                $("#all_fields").val(all_fields_json);
+                $("#fields_form").submit();
+
+            });
+        });
+    </script>
+}

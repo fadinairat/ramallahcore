@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Ramallah.Models.PageCategory>
+@using Ramallah.Models
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            <h1 class="m-0">@Localizer["Pages"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Pages"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+<div class="row">
+            <div class="col-6 text-@Localizer["Float"]"><h1 class="form-title">@Localizer["List All Pages"]</h1></div>
+    @if (Functions.CheckAccess("Create", "Pages", "Control", HttpContextAccessor.HttpContext))
+    {
+                <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="Create"><i class="bi bi-plus-circle"></i> @Localizer["Add New Page"]</a></div>
+    }
+</div>
+<form asp-action="Index" >
+<div class="row mb-3">
+    <div class="col-6 col-md-3">
+        <label for="keyword">@Localizer["Keyword"]:</label>
+        <input type="text" placeholder="@Localizer["Keyword"]" class="form-control" name="keyword" id="keyword" value="@ViewBag.keyword" />
+    </div>
+    <div class="col-6 col-md-3">
+        <label for="scat">@Localizer["Category"]:</label>
+        <select name="scat" id="scat" class="form-control" >
+            <option value="">:: @Localizer["Select Category"] ::</option>
+            @{
+                List<Category> cats = ViewBag.Categories;
+                foreach (Category temp in cats)
+                {                                                   
+                <!option value="@temp.Id" @(ViewBag.Category!=null && ViewBag.Category == temp.Id ? "SELECTED" : "") >@(currentCulture=="en" ? temp.Name : temp.ArName)</!option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-6 col-md-3">
+        <label for="slang">@Localizer["Language"]:</label>
+        <select name="slang" id="slang" class ="form-control">
+                <option value="">:: @Localizer["Select Language"] ::</option>
+                @{
+                List<Language> langs = ViewBag.Languages;
+                foreach (Language temp in langs)
+                {                                                   
+                    <!option value="@temp.Id" @(ViewBag.Language!=null && ViewBag.Language == temp.Id ? "SELECTED" : "")>@(currentCulture == "en" ? temp.Name : temp.ArName)</!option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-6 col-md-2"><br /><button type="submit" asp-action="Index" class="btn btn-primary mt-2">@Localizer["Search"]</button></div>
+</div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th width="30%">
+                @Html.DisplayNameFor(model => model.Page.Title)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Page.LangId)
+            </th>
+           <th>
+                @Html.DisplayNameFor(model => model.Page.Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Page.Views)
+            </th>
+           <th>
+                @Html.DisplayNameFor(model => model.Page.PageDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Page.AddDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Page.UserId)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="@(item.Page.Publish == false ? "table-warning":"")" >
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Page.Title)
+            </td>
+           
+            <td>
+                @(item.Language!=null ?(currentCulture =="en" ? item.Language.Name : item.Language.ArName) : "")
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Page.Priority)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Page.Views)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Page.PageDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Page.AddDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Page.UserAdd.Nickname)
+            </td>
+            
+            <td>
+                @{
+                if (Functions.CheckAccess("Edit", "Pages", "Control", HttpContextAccessor.HttpContext)){
+                    if(item.Page.Publish == true)
+                    {
+                        <a class="btn btn-info btn-sm" title="UnPublish" asp-action="UnPublish" asp-route-id="@item.Id"><i class="bi bi-check2-circle"></i> </a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-default btn-sm" title="Publish" asp-action="Publish" asp-route-id="@item.Id"><i class="bi bi-check2-circle"></i> </a>
+                    }
+                    <a class="btn btn-primary btn-sm" asp-action="Edit" asp-route-id="@item.PageId" title="Edit" alt="Edit"><i class="fas fa-pencil-alt"></i></a> 
+                }
+                }
+                
+                <a class="btn btn-primary btn-sm" asp-action="Details" asp-action="Pages" asp-area="" asp-route-id="@item.PageId" target="_blank" title="Preview" alt="Preview"> <i class="bi bi-binoculars-fill"></i></a> 
+                
+                @if (Functions.CheckAccess("Details", "Pages", "Control", HttpContextAccessor.HttpContext))
+                {
+                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.PageId" title="Details" alt="Details"><i class="fas fa-folder"></i></a>
+                }
+                @if (Functions.CheckAccess("Delete", "Pages", "Control", HttpContextAccessor.HttpContext))
+                {
+                    <a asp-route-id="@item.PageId" class="btn btn-danger btn-sm" asp-action="Delete" title="Delete" alt="Delete"><i class="fas fa-trash"></i></a>
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@if(ViewBag.PagesCount != null && ViewBag.PagesCount > 0){
+<div class="text-center d-flex justify-content-center">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+            <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="1">@Localizer["First"]</a></li>
+            @for(int i=1; i<=ViewBag.PagesCount; i++)
+            {
+                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="@i">@i</a></li>     
+            }    
+        <li class="page-item"><a class="page-link" asp-action="Index" asp-route-PageNumber="@ViewBag.PagesCount">@Localizer["Last"]</a></li>
+      </ul>
+    </nav>
+</div>
+}
+</div>
+</section>

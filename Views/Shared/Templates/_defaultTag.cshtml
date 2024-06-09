@@ -1,0 +1,39 @@
+﻿@using Ramallah.Models
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if(ViewBag.pageList != null){
+	<ul class="cat-line" >
+	@foreach(TagRel item in ViewBag.pageList){
+		<li>
+			@if(item.Page.Thumb!= null)
+			{
+				<div class="cat-line-thumb" >
+				@if(item.Page.Url != null){
+					<a href="@Url.Content(item.Page.Url)" class="urllink" ><img src="@Url.Content(item.Page.Thumb)" class="img-fluid list-img" ></a>
+				}
+				else
+				{
+					<a asp-action="Details" asp-controller="Pages" asp-route-id="@item.Page.PageId" asp-route-title="@item.Page.Title" class="linkimg"  ><img src="@Url.Content(item.Page.Thumb)" class="img-fluid list-img" ></a>
+				}
+				</div>
+			}
+			
+			@if(item.Page.Url !=null)
+			{
+				<div class="text cat-title"><a class='btitle1' href="@Url.Content(item.Page.Url.ToString())" >@item.Page.Title</a></div>
+			}
+			else
+			{
+				<div class="text cat-title"><a class='btitle1' asp-action="Details" asp-controller="Pages" asp-route-id="@item.Page.PageId" asp-route-title="@item.Page.Title" >@item.Page.Title</a></div>
+			}
+			<span class="stext" >@Html.Raw(item.Page.Summary)</span>
+			@if (item.Page.ShowDate)
+			{
+				<span class="sdate">@item.Page.PageDate.ToString("yyyy-MM-dd")</span>
+			}
+		</li>
+	}
+	</ul>
+}

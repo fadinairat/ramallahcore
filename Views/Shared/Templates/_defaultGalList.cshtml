@@ -1,0 +1,27 @@
+﻿@using Ramallah.Models
+@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (ViewBag.galList != null)
+{
+	foreach (Category item in ViewBag.galList)
+	{
+		<div class="col-12 col-sm-6 col-md-4 text-center mb-3">
+			<div class="cat_cont col3-cat">
+				<div class="cat_thumb_div">
+					@if (item.Thumb != null)
+					{
+						<a href="@Url.Action("Gallery","Categories",new{id=item.Id,title=item.ArName})" class="linkimg"><img
+								src="/@Url.Content(item.Thumb)" class="img-fluid list-img"></a>
+
+					}
+				</div>
+				<div class="text cat-title text-center"><a class='btitle1'
+						href="@Url.Action("Gallery","Categories",new{id=item.Id,title=item.ArName})">@item.ArName</a>
+				</div>
+				@Html.Raw(item.ArDescription)
+			</div>
+		</div>
+	}
+}

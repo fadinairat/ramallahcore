@@ -1,0 +1,159 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+@using Ramallah.Models
+@using Ramallah.Areas.Control.Controllers
+@using Microsoft.Extensions.Localization
+@using Ramallah.Helpers
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IStringLocalizer<HomeController> Localizer
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["title"] = Localizer["Home"];
+}
+
+@*<h3>The ID is "@HttpContextAccessor.HttpContext.Session.GetString("id")"</h3>
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Welcome @User.Identity.Name </h2>
+}
+<ul>
+    @foreach(var c in User.Claims){
+        <li>@c.Type : @c.Value</li>
+    }
+</ul>*@
+<partial name="_validationMsg" />
+<!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Dashboard"]</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+            <li class="breadcrumb-item"><a href="~/Control">@Localizer["Home"]</a></li>
+            <li class="breadcrumb-item active">@Localizer["Dashboard"]</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+        
+        @if (Functions.CheckAccess("Index", "Pages", "Control", HttpContextAccessor.HttpContext))
+        {
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@ViewBag.PagesCount</h3>
+                        <p>@Localizer["Pages"]</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a asp-action="Index" asp-controller="Pages" class="small-box-footer">@Localizer["More Info"] <i class="fas fa-arrow-circle-@Localizer["Float Rev"]"></i></a>
+                </div>
+            </div>
+        }
+        @if (Functions.CheckAccess("Index", "Categories", "Control", HttpContextAccessor.HttpContext))
+        {
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-dark">
+                    <div class="inner">
+                        <h3>@ViewBag.CatsCount</h3>
+                        <p>@Localizer["Categories"]</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a asp-action="Index" asp-controller="Categories" class="small-box-footer">@Localizer["More Info"] <i class="fas fa-arrow-circle-@Localizer["Float Rev"]"></i></a>
+                </div>
+            </div>
+        }
+        @if (Functions.CheckAccess("Index", "Files", "Control", HttpContextAccessor.HttpContext))
+        {
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-light">
+                    <div class="inner">
+                        <h3>@ViewBag.FilesCount</h3>
+                        <p>@Localizer["Files"]</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a asp-action="Index" asp-controller="Files" class="small-box-footer">@Localizer["More Info"] <i class="fas fa-arrow-circle-@Localizer["Float Rev"]"></i></a>
+                </div>
+            </div>
+        }
+        </div>
+
+        <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-7 connectedSortable">
+            <!-- Most Visited Pages -->
+            <div class="card card-primary card-outline">
+              <div class="card-body">
+                        <h3 class="card-title"><b>@Localizer["Most Visited"]</b></h3>
+
+                <table class="table table-striped" >
+                    <thead>
+                       <tr>
+                           <th>#</th>
+                           <th width="50%">@Localizer["Title"]</th>
+                            <th>@Localizer["Views"]</th>
+                           <th></th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (Page item in ViewBag.mostVisited) {
+                        <tr>
+                            <td>@item.PageId</td>
+                            <td>@item.Title</td>
+                            <td>@item.Views</td>
+                            <td>
+                                @if (Functions.CheckAccess("Details", "Pages", "Control", HttpContextAccessor.HttpContext))
+                                {
+                                    <a class="btn btn-info btn-sm" asp-action="Details" asp-controller="Pages" asp-route-id="@item.PageId"><i class="fas fa-folder"></i> @Localizer["Details"]</a>
+                                }
+                                <a asp-action="Details" asp-controller="Pages" asp-area="" asp-route-id="@item.PageId" asp-route-title="@item.Title" target="_blank" asp-route-id="@item.PageId" class="btn btn-primary btn-sm"> <i class="bi bi-binoculars-fill"></i> @Localizer["Preview"]</a>
+                            </td>
+                        </tr>
+                    }               
+                    </tbody>
+                </table>
+              </div>
+            </div><!-- /.card -->
+            <!-- /.pages -->
+          </section>
+          <!-- /.Left col -->
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          <section class="col-lg-5 connectedSortable">
+
+            <!-- Map card -->
+            
+            <!-- /.card -->
+
+            <!-- /.card -->
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>  

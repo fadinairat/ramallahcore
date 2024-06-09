@@ -1,0 +1,59 @@
+﻿@model Ramallah.Models.Category
+@using Ramallah.Models
+@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+	ViewData["Title"] = Model.ArName;
+}
+<div class="container pt-3" style="padding-top:150px;min-height:400px;">
+	<div class="row mb-3">
+		<div class="col-12 text-right">@Html.Raw(ViewBag.Route)</div>
+	</div>
+	<div class="row">
+		<div class="col-12 col-md-12">
+			<h3 class="navh6">@Model.ArName</h3>
+		</div>
+	</div>
+	@if (Model.ShowDescription == true && Model.ArDescription != null && Model.ArDescription.ToString() != "")
+	{
+		<div class="row page_content mt-3">@Html.Raw(Model.ArDescription)</div>
+	}
+	<div class="row mt-3 pt-3">
+		<partial name="@ViewBag.Template" />
+	</div>
+	<div class="row">
+		<div class="col-12">
+			@{
+				if (ViewBag.PagesCount != null && ViewBag.Page != null && ViewBag.PagesCount > 0)
+				{
+					Category cat = ViewBag.CatDetails;
+					double start = 1;
+					double limit = ViewBag.PagesCount;
+					double current = ViewBag.Page;
+
+					start = ((current - 5) > 0 ? (current - 5) : 1);
+					limit = ((current + 5) > limit ? limit : (current + 5));
+					<div class="text-center d-flex justify-content-center">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link"
+										href="@Url.Action("Details","Categories",new{id=cat.Id,title=cat.ArName,page=start})">الأولى</a>
+								</li>
+								@for (double i = start; i <= limit; i++)
+								{
+									<li class="page-item"><a class="page-link @(i==current ? " active" :"")"
+											href="@Url.Action("Details","Categories",new{id=cat.Id,title=cat.ArName,page=i})">@i</a>
+									</li>
+								}
+								<li class="page-item"><a class="page-link"
+										href="@Url.Action("Details","Categories",new{id=cat.Id,title=cat.ArName,page=limit})">الأخيرة</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				}
+			}
+		</div>
+	</div>
+</div>

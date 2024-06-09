@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Ramallah.Models.Permissions>
+
+@{
+    ViewData["Title"] = "Groups List";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<!-- DataTables -->
+<link rel="stylesheet" href="~/LTE-Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/LTE-Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="~/LTE-Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<partial name="_validationMsg" />
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Groups"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                <li class="breadcrumb-item active">@Localizer["Groups"]</li>
+            </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+      
+<section class="content">
+<div class="container-fluid">
+
+<div class="row">
+    <div class="col-6 text-start"><h1 class="form-title">@Localizer["List All Permissions"]</h1></div>
+    <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="CreatePermission"><i class="bi bi-plus-circle"></i> @Localizer["Add New Permission"]</a></div>
+</div>
+<table class="table" id="example2"> 
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Controller)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Controller)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" asp-action="EditPermission" asp-route-id="@item.Id"><i class="fas fa-pencil-alt"></i> </a> 
+                <a class="btn btn-info btn-sm" asp-action="PermDetails" asp-route-id="@item.Id"><i class="fas fa-folder"></i> </a> 
+                <a asp-route-id="@item.Id" class="btn btn-danger btn-sm" asp-action="DeletePerm"><i class="fas fa-trash"></i> </a> 
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+</table>
+</div>
+</section>
+
+@section Scripts{
+<!-- DataTables  & Plugins -->
+<script src="~/LTE-Admin/plugins/datatables/jquery.dataTables@(currentCulture =="en" ? "" : "-ar").js"></script>
+<script src="~/LTE-Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/LTE-Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/LTE-Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="~/LTE-Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/LTE-Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script type="text/javascript">
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+</script>
+}

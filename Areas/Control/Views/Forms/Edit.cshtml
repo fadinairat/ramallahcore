@@ -1,0 +1,158 @@
+﻿@model Ramallah.Models.Forms
+@using Ramallah.Models
+@inject IStringLocalizer<HomeController> Localizer
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Control/Views/Shared/_Layout.cshtml";
+    var currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<partial name="_validationMsg" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">@Localizer["Forms"]</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-@Localizer["Float Rev"]">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">@Localizer["Home"]</a></li>
+                    <li class="breadcrumb-item active">@Localizer["Forms"]</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container - fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-6 text-@Localizer["Float"]"><h1 class="form-title">@Localizer["Edit Form"]</h1></div>
+            <div class="col-6 text-@Localizer["Float Rev"] mt-3 sm-link"><a asp-action="Index"><i class="bi bi-list-ul"></i> @Localizer["List All Forms"]</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="row">
+                        <div class="form-group col-6 col-sm-6">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-6 col-sm-6">
+                            <label asp-for="ArTitle" class="control-label"></label>
+                            <input asp-for="ArTitle" class="form-control" />
+                            <span asp-validation-for="ArTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6 col-sm-6">
+                            <label asp-for="Direction" class="control-label"></label>
+                            <select asp-for="Direction" class="form-control">
+                                <option value="rtl">RTL</option>
+                                <option value="ltr">LTR</option>
+                            </select>
+                            <span asp-validation-for="Direction" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-6 col-sm-6">
+                            <label asp-for="LangId" class="control-label"></label>
+                            <select asp-for="LangId" class="form-control">
+                                @{
+                                    List<Language> langs = ViewBag.Languages;
+                                    foreach (Language temp in langs)
+                                    {
+                                        <option value="@temp.Id">@(currentCulture == "en" ? temp.Name : temp.ArName)</option>
+                                    }
+                                }
+                            </select>
+                            <span asp-validation-for="LangId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6 col-sm-6">
+                            <label asp-for="Type" class="control-label"></label>
+                            <select asp-for="Type" class="form-control">
+                                <!option value="0" @(Model!=null && Model.Type ==0 ? "SELECTED":"") >@Localizer["Public Form"]</!option>
+                                <!option value="1" @(Model!=null && Model.Type ==1 ? "SELECTED":"") >@Localizer["Job Application Form"]</!option>
+                                <!option value="2" @(Model!=null && Model.Type ==2 ? "SELECTED":"") >@Localizer["Projects Applications Form"]</!option>
+                            </select>
+                            <span asp-validation-for="Type" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6 col-sm-6">
+                            <label asp-for="SubmitLabel" class="control-label"></label>
+                            <input asp-for="SubmitLabel" class="form-control" />
+                            <span asp-validation-for="SubmitLabel" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-6 col-sm-6">
+                            <label asp-for="ArSubmitLabel" class="control-label"></label>
+                            <input asp-for="ArSubmitLabel" class="form-control" />
+                            <span asp-validation-for="ArSubmitLabel" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label asp-for="StartDate" class="control-label"></label>
+                            <input asp-for="StartDate" class="form-control" />
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label asp-for="ExpireDate" class="control-label"></label>
+                            <input asp-for="ExpireDate" class="form-control" />
+                            <span asp-validation-for="ExpireDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ArDescription" class="control-label"></label>
+                        <textarea asp-for="ArDescription" class="form-control"></textarea>
+                        <span asp-validation-for="ArDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" value="@Localizer["Save Changes"]" class="btn btn-primary" />&nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-danger" asp-action="Index">@Localizer["Cancel"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial">
+        <script>
+            $(function () {
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace('Description', {
+                    language: 'en',
+                    uiColor: '#f8f9fa',
+                    contentsLangDirection: 'ltr',
+                    height: 300,
+                    baseFloatZIndex: 10005
+                });
+                CKEDITOR.replace('ArDescription', {
+                    language: 'ar',
+                    uiColor: '#f8f9fa',
+                    contentsLangDirection: 'ltr',
+                    height: 300,
+                    baseFloatZIndex: 10005
+                });
+                //bootstrap WYSIHTML5 - text editor
+                //$(".textarea").wysihtml5();
+            });
+        </script>
+    }

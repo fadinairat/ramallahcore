@@ -1,0 +1,123 @@
+﻿<environment names="Development">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @*<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"
+            asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator"
+            crossorigin="anonymous"
+            integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.9/jquery.validate.unobtrusive.min.js"
+            asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"
+            crossorigin="anonymous"
+            integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds">
+    </script>*@
+</environment>
+<script type="text/javascript" >
+    $.validator.setDefaults({
+        messages: {
+        required: "الحقل اجباري *",
+        number: "رقم غير صحيح",
+        arabicOnly: "الحقل يجب ان يحتوي فقط على أحرف عربية!",
+        englishLettersOnly: "الحقل يجب ان يحتوى على احرف انجليزية فقط!",
+        accept: "امتداد الملف غير صحيح!",
+        email: "البريد الالكتروني غير صحيح",
+        maxlength: "النص أطول من اللازم!",
+        minlength: "النص اقصر من اللازم!",
+        pattern: "المحتوى غير مناسب!",
+        arabicEnglishLettersOnly: "ادخل أحرف فقط!",
+        }
+    });
+    $.validator.addMethod("correctYear", function (value, element) {        
+        var currentYear = new Date().getFullYear();
+        if (parseInt(value) > currentYear) return false;
+        else return true;
+    }, "السنة خاطئة!");
+
+    $.validator.addMethod("englishLettersOnly", function (value, element) {
+        return /^[A-Za-z\s]+$/.test(value);
+    }, "ادخل احرف انجليزية فقط!");
+
+    $.validator.addMethod("arabicEnglishLettersOnly", function (value, element) {
+        return /^[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FFa-zA-Z\s]+$/.test(value);
+    }, "ادخل أحرف فقط!");
+
+    $.validator.addMethod("arabicOnly", function (value, element) {
+        var arabicRegex = /^[\u0600-\u06FF\s]+$/;
+        return this.optional(element) || arabicRegex.test(value);
+    }, "ادخل حروف عربية فقط!");
+
+    //To make inline validation for accept parama
+    $.validator.addMethod("accept", function (value, element, param) {
+        console.log(param.allowed);
+      var extension = value.split('.').pop().toLowerCase();
+      return this.optional(element) || $.inArray(extension, param.allowed.split(',')) !== -1;
+    }, "حمل ملف بامتداد صحيح!");
+
+    //to add the allowed as parameter contains the allowed file extensions
+    $.validator.unobtrusive.adapters.add("accept", ["allowed"], function (options) {
+        options.rules["accept"] = { allowed: options.params.allowed };
+        options.messages["accept"] = options.message;
+    });
+
+    $.validator.addMethod('tinymceRequired', function (value, element) {
+        console.log("TextEditor ID:"+element.id);
+        var editorContent = tinyMCE.get(element.id).getContent();
+        if (editorContent.trim() === '') {
+          // Editor is empty
+          console.log('Editor is empty');
+          return false;
+        } else {
+          // Editor is not empty
+          console.log('Editor is not empty');
+          return true;
+        }
+        //return !tinyMCE.get(element.id).isEmpty();
+    }, 'حقل مربع النص اجباري');
+
+    $.validator.addMethod('tinymceLength', function (value, element, params) {
+        // Get the editor instance
+        var editor = tinymce.get(element.id);
+
+        // Get the content of the editor
+        var content = editor.getContent();
+
+        // Check the length of the content
+        return content.length <= params;
+    }, 'The text length must be less than or equal to {0}.');
+
+    function ValidateCharacterLength(name ) {
+        var max = 20;
+
+        var count = CountCharacters();
+        var body = tinymce.get(name).getBody();
+        var content = tinymce.trim(body.innerText || body.textContent);
+       
+
+        if (content > max) {
+            alert("Maximum " + max + " characters allowed.")
+            return false;
+        }
+        return;
+    }
+
+    $.validator.addMethod("notEqualToList", function (value, element, param) {
+        var notEqual = true;
+        console.log(value);
+        $(param).each(function () {
+            console.log($(this).val());
+            if (value === $(this).val()) {
+                notEqual = false;
+            }
+        });
+        return notEqual;
+    }, "Field is identical to another field, you have to make sure of your input!");
+</script>
