@@ -17,395 +17,395 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Ramallah
 build_property.RootNamespace = Ramallah
-build_property.ProjectDir = E:\.Net Sites\Ramallah\
+build_property.ProjectDir = E:\.Net Sites\RamallahGit\ramallahcore\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\.Net Sites\Ramallah
+build_property.MSBuildProjectDirectory = E:\.Net Sites\RamallahGit\ramallahcore
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Categories/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Categories/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDYXRlZ29yaWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Categories/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Categories/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDYXRlZ29yaWVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Categories/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Categories/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDYXRlZ29yaWVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Categories/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Categories/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDYXRlZ29yaWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Categories/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Categories/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDYXRlZ29yaWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Comments/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Comments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDb21tZW50c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Comments/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Comments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDb21tZW50c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Comments/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Comments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDb21tZW50c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Comments/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Comments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDb21tZW50c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Comments/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Comments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xDb21tZW50c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Files/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Files/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGaWxlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Files/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Files/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGaWxlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Files/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Files/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGaWxlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Files/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Files/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGaWxlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Files/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Files/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGaWxlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Forms/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Forms/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGb3Jtc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Forms/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Forms/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGb3Jtc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Forms/Fields.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Forms/Fields.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGb3Jtc1xGaWVsZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Forms/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Forms/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGb3Jtc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Forms/Preview.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Forms/Preview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGb3Jtc1xQcmV2aWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Forms/Results.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Forms/Results.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xGb3Jtc1xSZXN1bHRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/CreatePermission.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/CreatePermission.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcQ3JlYXRlUGVybWlzc2lvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/DeletePerm.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/DeletePerm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcRGVsZXRlUGVybS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/EditPermission.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/EditPermission.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcRWRpdFBlcm1pc3Npb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Groups/Permissions.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Groups/Permissions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xHcm91cHNcUGVybWlzc2lvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Home/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Home/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIb21lXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Home/ImportExcel.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Home/ImportExcel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIb21lXEltcG9ydEV4Y2VsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Home/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/HtmlTemplates/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/HtmlTemplates/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIdG1sVGVtcGxhdGVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/HtmlTemplates/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/HtmlTemplates/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIdG1sVGVtcGxhdGVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/HtmlTemplates/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/HtmlTemplates/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIdG1sVGVtcGxhdGVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/HtmlTemplates/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/HtmlTemplates/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIdG1sVGVtcGxhdGVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/HtmlTemplates/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/HtmlTemplates/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xIdG1sVGVtcGxhdGVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Menus/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Menus/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xNZW51c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Menus/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Menus/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xNZW51c1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Menus/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Menus/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xNZW51c1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Menus/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Menus/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xNZW51c1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Menus/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Menus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xNZW51c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Pages/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Pages/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xQYWdlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Pages/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Pages/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xQYWdlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Pages/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Pages/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xQYWdlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Pages/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Pages/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xQYWdlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Pages/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xQYWdlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Shared/_LoginPartial.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xTaGFyZWRcX0xvZ2luUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Shared/_validationMsg.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Shared/_validationMsg.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xTaGFyZWRcX3ZhbGlkYXRpb25Nc2cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Tags/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Tags/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xUYWdzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Tags/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Tags/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xUYWdzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Tags/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Tags/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xUYWdzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Tags/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Tags/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xUYWdzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Tags/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Tags/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xUYWdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/AccessDenied.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Forget.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Forget.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xGb3JnZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Login.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Users/Profile.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Users/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xVc2Vyc1xQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/_ViewImports.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/_ViewStart.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Categories/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Categories/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Categories/Gallery.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Categories/Gallery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xHYWxsZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Categories/GalPhotos.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Categories/GalPhotos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmllc1xHYWxQaG90b3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Files/Create.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Files/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Files/Delete.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Files/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Files/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Files/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Files/Edit.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Files/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Files/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Files/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Home/Index - Copy.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Home/Index - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleCAtIENvcHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Home/Index.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Home/Privacy.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Home/Search.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Home/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Pages/Details.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Pages/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Components/FooterMenu/Default.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Components/FooterMenu/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcRm9vdGVyTWVudVxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Components/TopMenu/Default.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Components/TopMenu/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVG9wTWVudVxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Error.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Templates/_3ColsCat.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Templates/_3ColsCat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRlbXBsYXRlc1xfM0NvbHNDYXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Templates/_contactus.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Templates/_contactus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRlbXBsYXRlc1xfY29udGFjdHVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Templates/_defaultCat.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Templates/_defaultCat.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRlbXBsYXRlc1xfZGVmYXVsdENhdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Templates/_defaultGalList.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Templates/_defaultGalList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRlbXBsYXRlc1xfZGVmYXVsdEdhbExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Templates/_defaultPage.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Templates/_defaultPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRlbXBsYXRlc1xfZGVmYXVsdFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Templates/_defaultTag.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Templates/_defaultTag.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRlbXBsYXRlc1xfZGVmYXVsdFRhZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/Templates/_defaultVideos.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/Templates/_defaultVideos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRlbXBsYXRlc1xfZGVmYXVsdFZpZGVvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/_validationMsg.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/_validationMsg.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF92YWxpZGF0aW9uTXNnLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/_ViewImports.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Views/_ViewStart.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/.Net Sites/Ramallah/Areas/Control/Views/Shared/_Layout.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Areas/Control/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29udHJvbFxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-hg2om4fqlk
 
-[E:/.Net Sites/Ramallah/Views/Shared/_Layout - Copy.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/_Layout - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQgLSBDb3B5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-rj176if9rb
 
-[E:/.Net Sites/Ramallah/Views/Shared/_Layout.cshtml]
+[E:/.Net Sites/RamallahGit/ramallahcore/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3956hn54ic

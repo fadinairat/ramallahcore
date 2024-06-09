@@ -10605,11 +10605,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\.Net Sites\\Ramallah\\Ramallah.csproj",
+      "projectUniqueName": "E:\\.Net Sites\\RamallahGit\\ramallahcore\\Ramallah.csproj",
       "projectName": "Ramallah",
-      "projectPath": "E:\\.Net Sites\\Ramallah\\Ramallah.csproj",
+      "projectPath": "E:\\.Net Sites\\RamallahGit\\ramallahcore\\Ramallah.csproj",
       "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "E:\\.Net Sites\\Ramallah\\obj\\",
+      "outputPath": "E:\\.Net Sites\\RamallahGit\\ramallahcore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",

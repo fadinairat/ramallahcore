@@ -33,6 +33,7 @@ namespace Ramallah.Controllers
         private readonly DataContext _context;
         private readonly IConfiguration _config;
         private readonly IEmailService _mail;
+
         //private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
         private readonly Microsoft.AspNetCore.Hosting.IWebHostEnvironment _environment;
         private readonly IStringLocalizer<HomeController> _localizer;
