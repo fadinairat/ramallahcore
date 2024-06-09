@@ -28163,3 +28163,208 @@ System.InvalidOperationException: The view 'NotFound' was not found. The followi
    at Program.<>c.<<<Main>$>b__0_8>d.MoveNext() in E:\.Net Sites\RamallahGit\ramallahcore\Program.cs:line 158
 --- End of stack trace from previous location ---
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-06-09 21:15:23.553 +03:00 [ERR] The view 'NotFound' was not found. Searched locations: ["/Views/Home/NotFound.ar-AE.cshtml","/Views/Home/NotFound.ar.cshtml","/Views/Home/NotFound.cshtml","/Views/Shared/NotFound.ar-AE.cshtml","/Views/Shared/NotFound.ar.cshtml","/Views/Shared/NotFound.cshtml","/Pages/Shared/NotFound.ar-AE.cshtml","/Pages/Shared/NotFound.ar.cshtml","/Pages/Shared/NotFound.cshtml","/NotFound.ar-AE.cshtml","/NotFound.ar.cshtml","/NotFound.cshtml"]
+2024-06-09 21:15:23.732 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'NotFound' was not found. The following locations were searched:
+/Views/Home/NotFound.ar-AE.cshtml
+/Views/Home/NotFound.ar.cshtml
+/Views/Home/NotFound.cshtml
+/Views/Shared/NotFound.ar-AE.cshtml
+/Views/Shared/NotFound.ar.cshtml
+/Views/Shared/NotFound.cshtml
+/Pages/Shared/NotFound.ar-AE.cshtml
+/Pages/Shared/NotFound.ar.cshtml
+/Pages/Shared/NotFound.cshtml
+/NotFound.ar-AE.cshtml
+/NotFound.ar.cshtml
+/NotFound.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Ramallah.LocalizationMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in E:\.Net Sites\RamallahGit\ramallahcore\LocalizationMiddleware.cs:line 39
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Program.<>c.<<<Main>$>b__0_8>d.MoveNext() in E:\.Net Sites\RamallahGit\ramallahcore\Program.cs:line 158
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-06-09 21:15:23.841 +03:00 [ERR] The view 'NotFound' was not found. Searched locations: ["/Views/Home/NotFound.ar-AE.cshtml","/Views/Home/NotFound.ar.cshtml","/Views/Home/NotFound.cshtml","/Views/Shared/NotFound.ar-AE.cshtml","/Views/Shared/NotFound.ar.cshtml","/Views/Shared/NotFound.cshtml","/Pages/Shared/NotFound.ar-AE.cshtml","/Pages/Shared/NotFound.ar.cshtml","/Pages/Shared/NotFound.cshtml","/NotFound.ar-AE.cshtml","/NotFound.ar.cshtml","/NotFound.cshtml"]
+2024-06-09 21:15:23.843 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'NotFound' was not found. The following locations were searched:
+/Views/Home/NotFound.ar-AE.cshtml
+/Views/Home/NotFound.ar.cshtml
+/Views/Home/NotFound.cshtml
+/Views/Shared/NotFound.ar-AE.cshtml
+/Views/Shared/NotFound.ar.cshtml
+/Views/Shared/NotFound.cshtml
+/Pages/Shared/NotFound.ar-AE.cshtml
+/Pages/Shared/NotFound.ar.cshtml
+/Pages/Shared/NotFound.cshtml
+/NotFound.ar-AE.cshtml
+/NotFound.ar.cshtml
+/NotFound.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Ramallah.LocalizationMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in E:\.Net Sites\RamallahGit\ramallahcore\LocalizationMiddleware.cs:line 39
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Program.<>c.<<<Main>$>b__0_8>d.MoveNext() in E:\.Net Sites\RamallahGit\ramallahcore\Program.cs:line 158
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-06-09 21:15:23.868 +03:00 [ERR] The view 'NotFound' was not found. Searched locations: ["/Views/Home/NotFound.ar-AE.cshtml","/Views/Home/NotFound.ar.cshtml","/Views/Home/NotFound.cshtml","/Views/Shared/NotFound.ar-AE.cshtml","/Views/Shared/NotFound.ar.cshtml","/Views/Shared/NotFound.cshtml","/Pages/Shared/NotFound.ar-AE.cshtml","/Pages/Shared/NotFound.ar.cshtml","/Pages/Shared/NotFound.cshtml","/NotFound.ar-AE.cshtml","/NotFound.ar.cshtml","/NotFound.cshtml"]
+2024-06-09 21:15:23.870 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'NotFound' was not found. The following locations were searched:
+/Views/Home/NotFound.ar-AE.cshtml
+/Views/Home/NotFound.ar.cshtml
+/Views/Home/NotFound.cshtml
+/Views/Shared/NotFound.ar-AE.cshtml
+/Views/Shared/NotFound.ar.cshtml
+/Views/Shared/NotFound.cshtml
+/Pages/Shared/NotFound.ar-AE.cshtml
+/Pages/Shared/NotFound.ar.cshtml
+/Pages/Shared/NotFound.cshtml
+/NotFound.ar-AE.cshtml
+/NotFound.ar.cshtml
+/NotFound.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Ramallah.LocalizationMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in E:\.Net Sites\RamallahGit\ramallahcore\LocalizationMiddleware.cs:line 39
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Program.<>c.<<<Main>$>b__0_8>d.MoveNext() in E:\.Net Sites\RamallahGit\ramallahcore\Program.cs:line 158
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-06-09 21:15:23.888 +03:00 [ERR] The view 'NotFound' was not found. Searched locations: ["/Views/Home/NotFound.ar-AE.cshtml","/Views/Home/NotFound.ar.cshtml","/Views/Home/NotFound.cshtml","/Views/Shared/NotFound.ar-AE.cshtml","/Views/Shared/NotFound.ar.cshtml","/Views/Shared/NotFound.cshtml","/Pages/Shared/NotFound.ar-AE.cshtml","/Pages/Shared/NotFound.ar.cshtml","/Pages/Shared/NotFound.cshtml","/NotFound.ar-AE.cshtml","/NotFound.ar.cshtml","/NotFound.cshtml"]
+2024-06-09 21:15:23.891 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'NotFound' was not found. The following locations were searched:
+/Views/Home/NotFound.ar-AE.cshtml
+/Views/Home/NotFound.ar.cshtml
+/Views/Home/NotFound.cshtml
+/Views/Shared/NotFound.ar-AE.cshtml
+/Views/Shared/NotFound.ar.cshtml
+/Views/Shared/NotFound.cshtml
+/Pages/Shared/NotFound.ar-AE.cshtml
+/Pages/Shared/NotFound.ar.cshtml
+/Pages/Shared/NotFound.cshtml
+/NotFound.ar-AE.cshtml
+/NotFound.ar.cshtml
+/NotFound.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Ramallah.LocalizationMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in E:\.Net Sites\RamallahGit\ramallahcore\LocalizationMiddleware.cs:line 39
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Program.<>c.<<<Main>$>b__0_8>d.MoveNext() in E:\.Net Sites\RamallahGit\ramallahcore\Program.cs:line 158
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-06-09 21:15:23.914 +03:00 [ERR] The view 'NotFound' was not found. Searched locations: ["/Views/Home/NotFound.ar-AE.cshtml","/Views/Home/NotFound.ar.cshtml","/Views/Home/NotFound.cshtml","/Views/Shared/NotFound.ar-AE.cshtml","/Views/Shared/NotFound.ar.cshtml","/Views/Shared/NotFound.cshtml","/Pages/Shared/NotFound.ar-AE.cshtml","/Pages/Shared/NotFound.ar.cshtml","/Pages/Shared/NotFound.cshtml","/NotFound.ar-AE.cshtml","/NotFound.ar.cshtml","/NotFound.cshtml"]
+2024-06-09 21:15:23.915 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The view 'NotFound' was not found. The following locations were searched:
+/Views/Home/NotFound.ar-AE.cshtml
+/Views/Home/NotFound.ar.cshtml
+/Views/Home/NotFound.cshtml
+/Views/Shared/NotFound.ar-AE.cshtml
+/Views/Shared/NotFound.ar.cshtml
+/Views/Shared/NotFound.cshtml
+/Pages/Shared/NotFound.ar-AE.cshtml
+/Pages/Shared/NotFound.ar.cshtml
+/Pages/Shared/NotFound.cshtml
+/NotFound.ar-AE.cshtml
+/NotFound.ar.cshtml
+/NotFound.cshtml
+   at Microsoft.AspNetCore.Mvc.ViewEngines.ViewEngineResult.EnsureSuccessful(IEnumerable`1 originalLocations)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor.ExecuteAsync(ActionContext context, ViewResult result)
+   at Microsoft.AspNetCore.Mvc.ViewResult.ExecuteResultAsync(ActionContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Session.SessionMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Ramallah.LocalizationMiddleware.InvokeAsync(HttpContext context, RequestDelegate next) in E:\.Net Sites\RamallahGit\ramallahcore\LocalizationMiddleware.cs:line 39
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.InterfaceMiddlewareBinder.<>c__DisplayClass2_0.<<CreateMiddleware>b__0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Localization.RequestLocalizationMiddleware.Invoke(HttpContext context)
+   at Program.<>c.<<<Main>$>b__0_8>d.MoveNext() in E:\.Net Sites\RamallahGit\ramallahcore\Program.cs:line 158
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)

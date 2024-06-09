@@ -45,6 +45,8 @@ namespace Ramallah.Controllers
             _environment = environment;
             _mail = mail;
             _localizer = localizer;
+
+            //Here is a comment code to apply it during the commit process.
         }
 
         public IActionResult getAreas(int cityId)
